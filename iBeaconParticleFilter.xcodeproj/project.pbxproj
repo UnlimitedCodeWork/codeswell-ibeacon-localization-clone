@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794311859E1CE00D6A640 /* CWLParticleFilter.m */; };
+		496794351859E95600D6A640 /* CWLPointParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794341859E95600D6A640 /* CWLPointParticle.m */; };
+		4967943C1859EE4700D6A640 /* CWLArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967943B1859EE4700D6A640 /* CWLArenaView.m */; };
 		49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
 		49BD182E1859D80700DDCAFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182D1859D80700DDCAFB /* CoreGraphics.framework */; };
 		49BD18301859D80700DDCAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182F1859D80700DDCAFB /* UIKit.framework */; };
@@ -35,6 +38,12 @@
 /* Begin PBXFileReference section */
 		01B4F9C280BF424298CDD392 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		496794301859E1CE00D6A640 /* CWLParticleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleFilter.h; sourceTree = "<group>"; };
+		496794311859E1CE00D6A640 /* CWLParticleFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleFilter.m; sourceTree = "<group>"; };
+		496794331859E95600D6A640 /* CWLPointParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLPointParticle.h; sourceTree = "<group>"; };
+		496794341859E95600D6A640 /* CWLPointParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLPointParticle.m; sourceTree = "<group>"; };
+		4967943A1859EE4700D6A640 /* CWLArenaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLArenaView.h; sourceTree = "<group>"; };
+		4967943B1859EE4700D6A640 /* CWLArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLArenaView.m; sourceTree = "<group>"; };
 		49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconParticleFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BD182B1859D80700DDCAFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49BD182D1859D80700DDCAFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,6 +87,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4967942F1859E1CE00D6A640 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				496794301859E1CE00D6A640 /* CWLParticleFilter.h */,
+				496794311859E1CE00D6A640 /* CWLParticleFilter.m */,
+				496794331859E95600D6A640 /* CWLPointParticle.h */,
+				496794341859E95600D6A640 /* CWLPointParticle.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		496794391859EE4700D6A640 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				4967943A1859EE4700D6A640 /* CWLArenaView.h */,
+				4967943B1859EE4700D6A640 /* CWLArenaView.m */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
 		49BD181F1859D80700DDCAFB = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +141,8 @@
 		49BD18311859D80700DDCAFB /* iBeaconParticleFilter */ = {
 			isa = PBXGroup;
 			children = (
+				4967942F1859E1CE00D6A640 /* Model */,
+				496794391859EE4700D6A640 /* UIElements */,
 				49BD183A1859D80700DDCAFB /* CWLAppDelegate.h */,
 				49BD183B1859D80700DDCAFB /* CWLAppDelegate.m */,
 				49BD183D1859D80700DDCAFB /* Main.storyboard */,
@@ -269,8 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */,
 				49BD18381859D80700DDCAFB /* main.m in Sources */,
+				496794351859E95600D6A640 /* CWLPointParticle.m in Sources */,
 				49BD18421859D80700DDCAFB /* CWLViewController.m in Sources */,
+				4967943C1859EE4700D6A640 /* CWLArenaView.m in Sources */,
 				49BD183C1859D80700DDCAFB /* CWLAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
