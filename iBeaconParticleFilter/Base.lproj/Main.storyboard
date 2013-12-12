@@ -20,7 +20,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BeaconCell" textLabel="p9z-Uh-EEG" detailTextLabel="KjZ-8l-MCi" style="IBUITableViewCellStyleSubtitle" id="aQl-3u-0Rk">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aQl-3u-0Rk">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aQl-3u-0Rk" id="Udb-yg-5nP">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -48,7 +48,7 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="JSj-cs-eTI"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" id="Si3-LZ-TN2">
+                            <view contentMode="scaleToFill" id="Si3-LZ-TN2" customClass="CWLArenaView">
                                 <rect key="frame" x="0.0" y="248" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,6 +57,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="arenaView" destination="Si3-LZ-TN2" id="g3T-K4-yuL"/>
+                        <outlet property="beaconTable" destination="IUG-2u-Dgs" id="l9Q-eH-NxE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
