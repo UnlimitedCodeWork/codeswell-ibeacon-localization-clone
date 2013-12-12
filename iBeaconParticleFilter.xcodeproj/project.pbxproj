@@ -200,6 +200,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Codeswell;
 				TargetAttributes = {
+					49BD18271859D80700DDCAFB = {
+						DevelopmentTeam = YHYQS23LRF;
+					};
 					49BD18481859D80700DDCAFB = {
 						TestTargetID = 49BD18271859D80700DDCAFB;
 					};
@@ -379,6 +382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
 				INFOPLIST_FILE = "iBeaconParticleFilter/iBeaconParticleFilter-Info.plist";
@@ -392,6 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
 				INFOPLIST_FILE = "iBeaconParticleFilter/iBeaconParticleFilter-Info.plist";
