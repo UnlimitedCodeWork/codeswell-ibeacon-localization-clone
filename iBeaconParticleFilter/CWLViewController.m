@@ -41,15 +41,18 @@
     
     if (self.landmarks == nil) {
         self.landmarks = @[
-                           [CWLBeaconLandmark landmarkWithX:10.0
-                                                          y:10.0
-                                                      color:[UIColor greenColor]],
-                           [CWLBeaconLandmark landmarkWithX:self.arenaView.bounds.size.width-10.0
-                                                          y:10.0
-                                                      color:[UIColor purpleColor]],
-                           [CWLBeaconLandmark landmarkWithX:self.arenaView.bounds.size.width/2.0
-                                                          y:self.arenaView.bounds.size.height-10.0
-                                                      color:[UIColor redColor]]
+                           [CWLBeaconLandmark landmarkWithIdent:[self identFromMajor:18900 minor:1234]
+                                                              x:10.0
+                                                              y:10.0
+                                                          color:[UIColor greenColor]],
+                           [CWLBeaconLandmark landmarkWithIdent:[self identFromMajor:18900 minor:567]
+                                                              x:self.arenaView.bounds.size.width-10.0
+                                                              y:10.0
+                                                          color:[UIColor purpleColor]],
+                           [CWLBeaconLandmark landmarkWithIdent:[self identFromMajor:18900 minor:89]
+                                                              x:self.arenaView.bounds.size.width/2.0
+                                                              y:self.arenaView.bounds.size.height-10.0
+                                                          color:[UIColor blueColor]]
                            ];
         self.arenaView.landmarks = self.landmarks;
     }
@@ -144,6 +147,13 @@
     cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", indexPath.row+1];
     
     return cell;
+}
+
+
+#pragma mark Helpers
+
+- (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor {
+    return [NSString stringWithFormat:@"%d-%d", major, minor];
 }
 
 

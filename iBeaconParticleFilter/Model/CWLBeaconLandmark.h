@@ -10,10 +10,11 @@
 
 @interface CWLBeaconLandmark : NSObject
 
-@property (nonatomic, assign) float x;
-@property (nonatomic, assign) float y;
-@property (nonatomic, strong) UIColor* color;
+@property (nonatomic, readonly) NSString* ident;
+@property (nonatomic, readonly) float x;
+@property (nonatomic, readonly) float y;
+@property (nonatomic, readonly) UIColor* color;
 
-+ (CWLBeaconLandmark*)landmarkWithX:(float)x y:(float)y color:(UIColor*)color;
++ (CWLBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color;
 
 @end

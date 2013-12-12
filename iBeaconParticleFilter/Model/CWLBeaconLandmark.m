@@ -8,10 +8,21 @@
 
 #import "CWLBeaconLandmark.h"
 
+@interface CWLBeaconLandmark ()
+
+@property (nonatomic, strong) NSString* ident;
+@property (nonatomic, assign) float x;
+@property (nonatomic, assign) float y;
+@property (nonatomic, strong) UIColor* color;
+
+@end
+
+
 @implementation CWLBeaconLandmark
 
-+ (CWLBeaconLandmark*)landmarkWithX:(float)x y:(float)y color:(UIColor*)color {
++ (CWLBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color {
     CWLBeaconLandmark* ret = [[CWLBeaconLandmark alloc] init];
+    ret.ident = ident;
     ret.x = x;
     ret.y = y;
     ret.color = color;
