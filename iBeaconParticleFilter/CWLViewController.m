@@ -11,23 +11,37 @@
 #import "CWLArenaView.h"
 #import "boxmuller.h"
 
-@interface CWLViewController () <CWLParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate>
+#import "ESTBeaconManager.h"
+
+@interface CWLViewController () <CWLParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate, ESTBeaconManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *beaconTable;
 @property (weak, nonatomic) IBOutlet CWLArenaView *arenaView;
 
 @property (nonatomic, strong) CWLParticleFilter* particleFilter;
 @property (nonatomic, strong) NSArray* landmarks;
+@property (nonatomic, strong) NSDictionary* landmarkHash;
 @property (nonatomic, strong) NSTimer* timer;
 
+@property (nonatomic, strong) ESTBeaconManager* beaconMgr;
+
 @end
+
+
+static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
+
 
 @implementation CWLViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
+    self.beaconMgr = [[ESTBeaconManager alloc] init];
+    self.beaconMgr.delegate = self;
+    self.beaconMgr.avoidUnknownStateBeacons = YES;
+    
+    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initRegionWithIdentifier:beaconRegionId];
+    [self.beaconMgr startRangingBeaconsInRegion:region];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,7 +49,7 @@
     if (self.particleFilter == nil) {
         self.particleFilter = [[CWLParticleFilter alloc] initWithSize:self.arenaView.bounds.size
                                                             landmarks:nil
-                                                        particleCount:20];
+                                                        particleCount:200];
         self.particleFilter.delegate = self;
     }
     
@@ -55,11 +69,17 @@
                                                           color:[UIColor blueColor]]
                            ];
         self.arenaView.landmarks = self.landmarks;
+        
+        NSMutableDictionary* tmpLandmarkHash = [NSMutableDictionary dictionary];
+        for (CWLBeaconLandmark* landmark in self.landmarks) {
+            tmpLandmarkHash[landmark.ident] = landmark;
+        }
+        self.landmarkHash = tmpLandmarkHash;
     }
         
     
     if (self.timer == nil) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self
                                                     selector:@selector(advanceParticleFilter)
                                                     userInfo:nil
@@ -75,9 +95,7 @@
 
 - (void)advanceParticleFilter {
     [self.particleFilter move];
-    
-    NSArray* measurements = nil;
-    [self.particleFilter sense:measurements];
+    [self.particleFilter sense:self.landmarks];
 }
 
 
@@ -110,12 +128,32 @@
     p.y += delta_y;
 }
 
+#define MEASUREMENTSTANDARDDEVIATION 50.0
 - (float)particleFilter:(CWLParticleFilter*)filter getLikelihood:(CWLParticleBase*)particle withMeasurements:(id)measurements {
-#warning Incomplete method implementation.
-    return 30;
+    CWLPointParticle* p = (CWLPointParticle*)particle;
+
+    NSArray* measuredLandmarks = measurements;
+    float confidence = 1.0;
+    
+    for (CWLBeaconLandmark* landmark in measuredLandmarks) {
+        
+        if (landmark.rssi < -10) {
+            
+            // Get the expected distance, using a^2 + b^2 = c^2
+            float expectedDistance = sqrtf(
+                                           powf((landmark.x-p.x), 2)
+                                           + powf((landmark.y-p.y), 2)
+                                           );
+            
+            float error = landmark.distance - expectedDistance;
+            confidence *= [self confidenceFromDisplacement:error sigma:MEASUREMENTSTANDARDDEVIATION];
+        }
+    }
+    
+    return confidence;
 }
 
-#define NOISESTANDARDDEVIATION 3.0
+#define NOISESTANDARDDEVIATION 5.0
 - (CWLParticleBase*)particleFilter:(CWLParticleFilter*)filter particleWithNoiseFromParticle:(CWLParticleBase*)particle {
     CWLPointParticle* p = (CWLPointParticle*)particle;
     
@@ -128,23 +166,62 @@
 }
 
 
+#pragma mark ESTBeaconManagerDelegate protocol
+
+-(void)beaconManager:(ESTBeaconManager *)manager
+     didRangeBeacons:(NSArray *)beacons
+            inRegion:(ESTBeaconRegion *)region
+{
+    if ([region.identifier isEqualToString:beaconRegionId]) {
+        
+        [self.landmarks enumerateObjectsUsingBlock:^(CWLBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
+            landmark.rssi = 0;
+            landmark.distance = 0;
+        }];
+        
+        for (ESTBeacon* beacon in beacons) {
+            NSString* ident = [self identFromMajor:[beacon.major integerValue] minor:[beacon.minor integerValue]];
+            
+            CWLBeaconLandmark* landmark = self.landmarkHash[ident];
+            landmark.rssi = beacon.rssi;
+        }
+
+        // Pre-calculate the measured distance to save repetition
+        [self.landmarks enumerateObjectsUsingBlock:^(CWLBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
+            if (landmark.rssi < -10) {
+                landmark.distance = [self distanceFromRssi:landmark.rssi];
+            }
+        }];
+        
+        [self.beaconTable reloadData];
+        [self.particleFilter sense:self.landmarks];
+    }
+}
+
+
 
 #pragma mark UITableViewDataSource Protocol
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    return 3;
+    return self.landmarks.count;
 }
 
 
 #pragma mark UITableViewDelegate Protocol
 
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Known landmarks";
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"BeaconCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    CWLBeaconLandmark* landmark = self.landmarks[indexPath.row];
+    
     // Configure the cell...
-    cell.textLabel.text = [NSString stringWithFormat:@"Cell %d", indexPath.row+1];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", landmark.ident, landmark.rssi];
+    cell.textLabel.textColor = landmark.color;
     
     return cell;
 }
@@ -154,6 +231,27 @@
 
 - (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor {
     return [NSString stringWithFormat:@"%d-%d", major, minor];
+}
+
+- (float)distanceFromRssi:(NSInteger)rssi {
+    
+    // Based on some physics here: http://stackoverflow.com/a/11249007/46731
+    // (Assuming frequency is constant)
+    // As well as fudge factors from empirical measurement
+
+    float ret = -5.0 * (rssi + 35);
+    
+    return ret;
+}
+
+
+- (float)confidenceFromDisplacement:(float)displacement sigma:(float)sigma {
+    
+    // Based on http://stackoverflow.com/a/656992/46731
+    // No need to normalize it, since the particle filter will normalize all weights
+    
+    float ret = exp( -pow(displacement, 2) / (2 * pow(sigma, 2)) );
+    return ret;
 }
 
 
