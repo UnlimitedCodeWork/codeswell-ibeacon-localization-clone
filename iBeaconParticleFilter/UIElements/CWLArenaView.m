@@ -12,7 +12,8 @@
 
 @property (nonatomic, assign) BOOL isInitialized;
 @property (nonatomic, assign) CGFloat particleRadius;
-@property (nonatomic, assign) CGFloat strokeWidth;
+@property (nonatomic, assign) CGFloat landmarkRadius;
+//@property (nonatomic, assign) CGFloat strokeWidth;
 @property (nonatomic, assign) CGColorRef strokeColor;
 @property (nonatomic, assign) CGColorRef fillColor;
 
@@ -22,22 +23,17 @@
 
 @implementation CWLArenaView
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)initialize {
-    self.particleRadius = 5.0;
-    self.strokeWidth = 1.0;
-    self.strokeColor = [UIColor blueColor].CGColor;
+    self.particleRadius = 3.0;
+    self.landmarkRadius = 8.0;
+//    self.strokeWidth = 1.0;
+//    self.strokeColor = [UIColor blueColor].CGColor;
     self.fillColor = [UIColor redColor].CGColor;
     
     self.isInitialized = YES;
 }
+
 
 - (void)drawRect:(CGRect)rect {
     DDLogVerbose(@"[%@] Redrawing.", self.class);
@@ -59,6 +55,17 @@
         CGContextFillEllipseInRect (context, rect);
     }
 
+    for (CWLBeaconLandmark* landmark in self.landmarks) {
+        CGRect rect = CGRectMake(
+                                 landmark.x-(self.landmarkRadius/2.0),
+                                 landmark.y-(self.landmarkRadius/2.0),
+                                 self.landmarkRadius,
+                                 self.landmarkRadius);
+        
+        CGContextSetFillColorWithColor(context, landmark.color.CGColor);
+        CGContextFillEllipseInRect (context, rect);
+    }
+    
     CGContextFillPath(context);
     
 }

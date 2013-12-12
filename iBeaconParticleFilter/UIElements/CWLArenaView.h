@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CWLPointParticle.h"
+#import "CWLBeaconLandmark.h"
 
 
 @interface CWLArenaView : UIView
 
 @property (nonatomic, copy) NSArray* particles;
+@property (nonatomic, copy) NSArray* landmarks;
 
 @end

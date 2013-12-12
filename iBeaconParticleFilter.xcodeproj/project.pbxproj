@@ -12,6 +12,7 @@
 		4967943C1859EE4700D6A640 /* CWLArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967943B1859EE4700D6A640 /* CWLArenaView.m */; };
 		49679441185A066600D6A640 /* boxmuller.c in Sources */ = {isa = PBXBuildFile; fileRef = 4967943F185A066600D6A640 /* boxmuller.c */; };
 		49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679443185A101E00D6A640 /* CWLParticleBase.m */; };
+		49679447185A202400D6A640 /* CWLBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679446185A202400D6A640 /* CWLBeaconLandmark.m */; };
 		49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
 		49BD182E1859D80700DDCAFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182D1859D80700DDCAFB /* CoreGraphics.framework */; };
 		49BD18301859D80700DDCAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182F1859D80700DDCAFB /* UIKit.framework */; };
@@ -50,6 +51,8 @@
 		49679440185A066600D6A640 /* boxmuller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boxmuller.h; sourceTree = "<group>"; };
 		49679442185A101E00D6A640 /* CWLParticleBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleBase.h; sourceTree = "<group>"; };
 		49679443185A101E00D6A640 /* CWLParticleBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleBase.m; sourceTree = "<group>"; };
+		49679445185A202400D6A640 /* CWLBeaconLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLBeaconLandmark.h; sourceTree = "<group>"; };
+		49679446185A202400D6A640 /* CWLBeaconLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLBeaconLandmark.m; sourceTree = "<group>"; };
 		49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconParticleFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BD182B1859D80700DDCAFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49BD182D1859D80700DDCAFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,6 +105,8 @@
 				496794311859E1CE00D6A640 /* CWLParticleFilter.m */,
 				496794331859E95600D6A640 /* CWLPointParticle.h */,
 				496794341859E95600D6A640 /* CWLPointParticle.m */,
+				49679445185A202400D6A640 /* CWLBeaconLandmark.h */,
+				49679446185A202400D6A640 /* CWLBeaconLandmark.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49679447185A202400D6A640 /* CWLBeaconLandmark.m in Sources */,
 				496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */,
 				49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */,
 				49BD18381859D80700DDCAFB /* main.m in Sources */,

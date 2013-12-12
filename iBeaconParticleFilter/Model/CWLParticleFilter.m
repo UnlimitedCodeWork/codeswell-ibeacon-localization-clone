@@ -28,7 +28,7 @@
 - (id)initWithSize:(CGSize)size landmarks:(NSArray*)landMarks particleCount:(NSUInteger)particleCount {
     self = [super init];
     if (self) {
-        self.particleCount = particleCount;
+        _particleCount = particleCount;
         DDLogInfo(@"[%@] Instantiated.", self.class);
     }
     return self;

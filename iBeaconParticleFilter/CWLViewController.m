@@ -9,7 +9,6 @@
 #import "CWLViewController.h"
 #import "CWLParticleFilter.h"
 #import "CWLArenaView.h"
-#import "CWLPointParticle.h"
 #import "boxmuller.h"
 
 @interface CWLViewController () <CWLParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -18,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet CWLArenaView *arenaView;
 
 @property (nonatomic, strong) CWLParticleFilter* particleFilter;
+@property (nonatomic, strong) NSArray* landmarks;
 @property (nonatomic, strong) NSTimer* timer;
 
 @end
@@ -38,6 +38,22 @@
                                                         particleCount:20];
         self.particleFilter.delegate = self;
     }
+    
+    if (self.landmarks == nil) {
+        self.landmarks = @[
+                           [CWLBeaconLandmark landmarkWithX:10.0
+                                                          y:10.0
+                                                      color:[UIColor greenColor]],
+                           [CWLBeaconLandmark landmarkWithX:self.arenaView.bounds.size.width-10.0
+                                                          y:10.0
+                                                      color:[UIColor purpleColor]],
+                           [CWLBeaconLandmark landmarkWithX:self.arenaView.bounds.size.width/2.0
+                                                          y:self.arenaView.bounds.size.height-10.0
+                                                      color:[UIColor redColor]]
+                           ];
+        self.arenaView.landmarks = self.landmarks;
+    }
+        
     
     if (self.timer == nil) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1
