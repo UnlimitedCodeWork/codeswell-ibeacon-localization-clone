@@ -8,22 +8,37 @@
 
 #import "CWLViewController.h"
 
-@interface CWLViewController ()
+@interface CWLViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
 @implementation CWLViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark UITableViewDataSource Protocol
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
+    return 3;
 }
+
+
+#pragma mark UITableViewDelegate Protocol
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"BeaconCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    cell.textLabel.text = [NSString stringWithFormat:@"Cell %ld", indexPath.row+1];
+    
+    return cell;
+}
+
 
 @end
