@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CWLParticleBase.h"
 
-@interface CWLPointParticle : NSObject
+@interface CWLPointParticle : CWLParticleBase
 
 @property (nonatomic, assign) CGFloat x;
 @property (nonatomic, assign) CGFloat y;

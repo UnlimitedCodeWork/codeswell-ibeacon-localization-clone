@@ -15,11 +15,11 @@
     #import <Foundation/Foundation.h>
 
     #import "DDLog.h"
-#endif
 
-// Default logging levels
-#ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_INFO;
-#else
-static const int ddLogLevel = LOG_LEVEL_ERROR;
+    // Default logging levels
+    #ifdef DEBUG
+    static const int ddLogLevel = LOG_LEVEL_INFO;
+    #else
+    static const int ddLogLevel = LOG_LEVEL_ERROR;
+    #endif
 #endif

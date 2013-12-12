@@ -40,7 +40,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    DDLogInfo(@"[%@] Redrawing.", self.class);
+    DDLogVerbose(@"[%@] Redrawing.", self.class);
     
     if (!self.isInitialized) {
         [self initialize];

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CWLParticleBase.h"
 
 @class CWLParticleFilter;
 
@@ -14,7 +15,10 @@
 @protocol CWLParticleFilterDelegate <NSObject>
 
 @required
-- (id)newParticleForParticleFilter:(CWLParticleFilter*)filter;
+- (CWLParticleBase*)newParticleForParticleFilter:(CWLParticleFilter*)filter;
+- (void)particleFilter:(CWLParticleFilter*)filter moveParticle:(CWLParticleBase*)particle;
+- (float)particleFilter:(CWLParticleFilter*)filter getLikelihood:(CWLParticleBase*)particle withMeasurements:(id)measurements;
+- (CWLParticleBase*)particleFilter:(CWLParticleFilter*)filter particleWithNoiseFromParticle:(CWLParticleBase*)particle;
 
 @optional
 - (void)particleFilter:(CWLParticleFilter*)filter particlesDidAdvance:(NSArray*)particles;
@@ -29,6 +33,7 @@
 @property (nonatomic, readonly) NSArray* particles;
 
 - (id)initWithSize:(CGSize)size landmarks:(NSArray*)landMarks particleCount:(NSUInteger)particleCount;
-- (void)advance;
+- (void)move;
+- (void)sense:(id)measurements;
 
 @end
