@@ -168,6 +168,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 
 #pragma mark ESTBeaconManagerDelegate protocol
 
+#define PXPERMETER (400.0/7.0)
 -(void)beaconManager:(ESTBeaconManager *)manager
      didRangeBeacons:(NSArray *)beacons
             inRegion:(ESTBeaconRegion *)region
@@ -189,7 +190,8 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
         // Pre-calculate the measured distance to save repetition
         [self.landmarks enumerateObjectsUsingBlock:^(CWLBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
             if (landmark.rssi < -10) {
-                landmark.distance = [self distanceFromRssi:landmark.rssi];
+                float distanceInPx = PXPERMETER * [self metersFromRssi:landmark.rssi];
+                landmark.distance = distanceInPx;
             }
         }];
         
@@ -220,7 +222,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     CWLBeaconLandmark* landmark = self.landmarks[indexPath.row];
     
     // Configure the cell...
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)", landmark.ident, landmark.rssi];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%ld)", landmark.ident, (long)landmark.rssi];
     cell.textLabel.textColor = landmark.color;
     
     return cell;
@@ -230,16 +232,15 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 #pragma mark Helpers
 
 - (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor {
-    return [NSString stringWithFormat:@"%d-%d", major, minor];
+    return [NSString stringWithFormat:@"%ld-%ld", (long)major, (long)minor];
 }
 
-- (float)distanceFromRssi:(NSInteger)rssi {
-    
-    // Based on some physics here: http://stackoverflow.com/a/11249007/46731
-    // (Assuming frequency is constant)
-    // As well as fudge factors from empirical measurement
+- (float)metersFromRssi:(NSInteger)rssi {
 
-    float ret = -5.0 * (rssi + 35);
+    // Based on measurement of Estimote beacons, power set at -8
+
+//    float ret = 8.6604 * logf(-rssi) + 72.971;
+    float ret = 0.0003 * expf(0.1122*-rssi);
     
     return ret;
 }

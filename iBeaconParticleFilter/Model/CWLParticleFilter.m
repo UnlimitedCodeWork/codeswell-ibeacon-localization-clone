@@ -109,7 +109,7 @@
 #pragma mark Helpers
 
 - (void)initializeParticles {
-    DDLogInfo(@"[%@] Initializing %d particles.", self.class, self.particleCount);
+    DDLogInfo(@"[%@] Initializing %ld particles.", self.class, (long)self.particleCount);
     
     NSMutableArray* tmpParticles = [[NSMutableArray alloc] initWithCapacity:self.particleCount];
     for (NSUInteger i = 0; i < self.particleCount; i++) {
