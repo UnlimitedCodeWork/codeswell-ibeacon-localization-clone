@@ -16,8 +16,18 @@
 @property (nonatomic, readonly) UIColor* color;
 
 @property (nonatomic, assign) NSInteger rssi;
-@property (nonatomic, assign) float distance;
+// Trailing average and standard deviation of RSSI values
+@property (nonatomic, readonly) float meanRssi;
+@property (nonatomic, readonly) float stdDeviationRssi;
+// Calculated range distances based on above
+@property (nonatomic, readonly) float meters;
+@property (nonatomic, readonly) float meanMeters;
+@property (nonatomic, readonly) float meanMetersVariance;
+
 
 + (CWLBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color;
+
+// Helpers
++ (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor;
 
 @end

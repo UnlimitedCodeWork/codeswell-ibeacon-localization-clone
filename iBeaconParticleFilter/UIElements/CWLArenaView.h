@@ -15,5 +15,6 @@
 
 @property (nonatomic, copy) NSArray* particles;
 @property (nonatomic, copy) NSArray* landmarks;
+@property (nonatomic, assign) float pxPerMeter;
 
 @end

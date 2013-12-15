@@ -29,12 +29,20 @@
 
 
 static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
+#define PXPERMETER (300.0/7.0)
+#define XBOUND 7.0
+#define YBOUND 5.0
+#define INSET 0.4
+#define MEASUREMENTVARIANCE 2.0
+#define NOISEVARIANCE 0.25
 
 
 @implementation CWLViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.arenaView.pxPerMeter = PXPERMETER;
     
     self.beaconMgr = [[ESTBeaconManager alloc] init];
     self.beaconMgr.delegate = self;
@@ -49,23 +57,23 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     if (self.particleFilter == nil) {
         self.particleFilter = [[CWLParticleFilter alloc] initWithSize:self.arenaView.bounds.size
                                                             landmarks:nil
-                                                        particleCount:200];
+                                                        particleCount:250];
         self.particleFilter.delegate = self;
     }
     
     if (self.landmarks == nil) {
         self.landmarks = @[
-                           [CWLBeaconLandmark landmarkWithIdent:[self identFromMajor:18900 minor:1234]
-                                                              x:10.0
-                                                              y:10.0
+                           [CWLBeaconLandmark landmarkWithIdent:[CWLBeaconLandmark identFromMajor:18900 minor:1234]
+                                                              x:INSET
+                                                              y:INSET
                                                           color:[UIColor greenColor]],
-                           [CWLBeaconLandmark landmarkWithIdent:[self identFromMajor:18900 minor:567]
-                                                              x:self.arenaView.bounds.size.width-10.0
-                                                              y:10.0
+                           [CWLBeaconLandmark landmarkWithIdent:[CWLBeaconLandmark identFromMajor:18900 minor:567]
+                                                              x:XBOUND-INSET
+                                                              y:INSET
                                                           color:[UIColor purpleColor]],
-                           [CWLBeaconLandmark landmarkWithIdent:[self identFromMajor:18900 minor:89]
-                                                              x:self.arenaView.bounds.size.width/2.0
-                                                              y:self.arenaView.bounds.size.height-10.0
+                           [CWLBeaconLandmark landmarkWithIdent:[CWLBeaconLandmark identFromMajor:18900 minor:89]
+                                                              x:XBOUND/2.0
+                                                              y:YBOUND
                                                           color:[UIColor blueColor]]
                            ];
         self.arenaView.landmarks = self.landmarks;
@@ -78,13 +86,13 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     }
         
     
-    if (self.timer == nil) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                      target:self
-                                                    selector:@selector(advanceParticleFilter)
-                                                    userInfo:nil
-                                                     repeats:YES];
-    }
+//    if (self.timer == nil) {
+//        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+//                                                      target:self
+//                                                    selector:@selector(advanceParticleFilter)
+//                                                    userInfo:nil
+//                                                     repeats:YES];
+//    }
     
 }
 
@@ -104,17 +112,13 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 - (CWLParticleBase*)newParticleForParticleFilter:(CWLParticleFilter *)filter {
     
     CWLPointParticle* ret = [[CWLPointParticle alloc] init];
-    ret.x = arc4random() % ((NSInteger)self.arenaView.bounds.size.width-20) + 10.0;
-    ret.y = arc4random() % ((NSInteger)self.arenaView.bounds.size.height-20) + 10.0;
+    ret.x = (arc4random() % (NSInteger)(XBOUND*1000)) / 1000.0;
+    ret.y = (arc4random() % (NSInteger)(YBOUND*1000)) / 1000.0;
+    DDLogVerbose(@"New particle: (%4.2f,%4.2f)", ret.x, ret.y);
     
     return ret;
 }
 
-
-- (void)particleFilter:(CWLParticleFilter*)filter particlesDidAdvance:(NSArray *)particles {
-    self.arenaView.particles = particles;
-    [self.arenaView setNeedsDisplay];
-}
 
 - (void)particleFilter:(CWLParticleFilter*)filter moveParticle:(CWLParticleBase*)particle {
     CWLPointParticle* p = (CWLPointParticle*)particle;
@@ -128,7 +132,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     p.y += delta_y;
 }
 
-#define MEASUREMENTSTANDARDDEVIATION 50.0
+
 - (float)particleFilter:(CWLParticleFilter*)filter getLikelihood:(CWLParticleBase*)particle withMeasurements:(id)measurements {
     CWLPointParticle* p = (CWLPointParticle*)particle;
 
@@ -139,36 +143,41 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
         
         if (landmark.rssi < -10) {
             
-            // Get the expected distance, using a^2 + b^2 = c^2
+            // Get the expected distance in pixels, using a^2 + b^2 = c^2
             float expectedDistance = sqrtf(
                                            powf((landmark.x-p.x), 2)
                                            + powf((landmark.y-p.y), 2)
                                            );
             
-            float error = landmark.distance - expectedDistance;
-            confidence *= [self confidenceFromDisplacement:error sigma:MEASUREMENTSTANDARDDEVIATION];
+            float error = landmark.meters - expectedDistance;
+            confidence *= [self confidenceFromDisplacement:error sigma:MEASUREMENTVARIANCE];
         }
     }
     
     return confidence;
 }
 
-#define NOISESTANDARDDEVIATION 5.0
+
 - (CWLParticleBase*)particleFilter:(CWLParticleFilter*)filter particleWithNoiseFromParticle:(CWLParticleBase*)particle {
     CWLPointParticle* p = (CWLPointParticle*)particle;
     
     // Create new particle from old and add gaussian noise
     CWLPointParticle* ret = [[CWLPointParticle alloc] init];
-    ret.x = p.x + box_muller(0.0, NOISESTANDARDDEVIATION);
-    ret.y = p.y + box_muller(0.0, NOISESTANDARDDEVIATION);
+    ret.x = p.x + box_muller(0.0, NOISEVARIANCE);
+    ret.y = p.y + box_muller(0.0, NOISEVARIANCE);
     
     return ret;
 }
 
 
+- (void)particleFilter:(CWLParticleFilter*)filter particlesDidAdvance:(NSArray *)particles {
+    self.arenaView.particles = particles;
+    [self.arenaView setNeedsDisplay];
+}
+
+
 #pragma mark ESTBeaconManagerDelegate protocol
 
-#define PXPERMETER (400.0/7.0)
 -(void)beaconManager:(ESTBeaconManager *)manager
      didRangeBeacons:(NSArray *)beacons
             inRegion:(ESTBeaconRegion *)region
@@ -177,24 +186,15 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
         
         [self.landmarks enumerateObjectsUsingBlock:^(CWLBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
             landmark.rssi = 0;
-            landmark.distance = 0;
         }];
         
         for (ESTBeacon* beacon in beacons) {
-            NSString* ident = [self identFromMajor:[beacon.major integerValue] minor:[beacon.minor integerValue]];
+            NSString* ident = [CWLBeaconLandmark identFromMajor:[beacon.major integerValue] minor:[beacon.minor integerValue]];
             
             CWLBeaconLandmark* landmark = self.landmarkHash[ident];
             landmark.rssi = beacon.rssi;
         }
 
-        // Pre-calculate the measured distance to save repetition
-        [self.landmarks enumerateObjectsUsingBlock:^(CWLBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
-            if (landmark.rssi < -10) {
-                float distanceInPx = PXPERMETER * [self metersFromRssi:landmark.rssi];
-                landmark.distance = distanceInPx;
-            }
-        }];
-        
         [self.beaconTable reloadData];
         [self.particleFilter sense:self.landmarks];
     }
@@ -225,26 +225,14 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%ld)", landmark.ident, (long)landmark.rssi];
     cell.textLabel.textColor = landmark.color;
     
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"range: %4.2fm  mean: %4.2fm  std. dev: ±%4.2f",
+                                 landmark.meters, landmark.meanRssi, landmark.stdDeviationRssi];
+    
     return cell;
 }
 
 
 #pragma mark Helpers
-
-- (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor {
-    return [NSString stringWithFormat:@"%ld-%ld", (long)major, (long)minor];
-}
-
-- (float)metersFromRssi:(NSInteger)rssi {
-
-    // Based on measurement of Estimote beacons, power set at -8
-
-//    float ret = 8.6604 * logf(-rssi) + 72.971;
-    float ret = 0.0003 * expf(0.1122*-rssi);
-    
-    return ret;
-}
-
 
 - (float)confidenceFromDisplacement:(float)displacement sigma:(float)sigma {
     
