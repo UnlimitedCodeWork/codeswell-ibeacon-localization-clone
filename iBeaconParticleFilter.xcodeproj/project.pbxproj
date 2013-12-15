@@ -22,21 +22,8 @@
 		49BD183F1859D80700DDCAFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49BD183D1859D80700DDCAFB /* Main.storyboard */; };
 		49BD18421859D80700DDCAFB /* CWLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BD18411859D80700DDCAFB /* CWLViewController.m */; };
 		49BD18441859D80700DDCAFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49BD18431859D80700DDCAFB /* Images.xcassets */; };
-		49BD184B1859D80700DDCAFB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD184A1859D80700DDCAFB /* XCTest.framework */; };
-		49BD184C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
-		49BD184D1859D80700DDCAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182F1859D80700DDCAFB /* UIKit.framework */; };
 		650AAB6CD8514A0398C2EA72 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B4F9C280BF424298CDD392 /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		49BD184E1859D80700DDCAFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49BD18201859D80700DDCAFB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49BD18271859D80700DDCAFB;
-			remoteInfo = iBeaconParticleFilter;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		01B4F9C280BF424298CDD392 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +54,6 @@
 		49BD18401859D80700DDCAFB /* CWLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWLViewController.h; sourceTree = "<group>"; };
 		49BD18411859D80700DDCAFB /* CWLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWLViewController.m; sourceTree = "<group>"; };
 		49BD18431859D80700DDCAFB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		49BD18491859D80700DDCAFB /* iBeaconParticleFilterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBeaconParticleFilterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BD184A1859D80700DDCAFB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -80,16 +66,6 @@
 				49BD18301859D80700DDCAFB /* UIKit.framework in Frameworks */,
 				49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */,
 				650AAB6CD8514A0398C2EA72 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49BD18461859D80700DDCAFB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49BD184B1859D80700DDCAFB /* XCTest.framework in Frameworks */,
-				49BD184D1859D80700DDCAFB /* UIKit.framework in Frameworks */,
-				49BD184C1859D80700DDCAFB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */,
-				49BD18491859D80700DDCAFB /* iBeaconParticleFilterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,24 +185,6 @@
 			productReference = 49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		49BD18481859D80700DDCAFB /* iBeaconParticleFilterTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49BD185D1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconParticleFilterTests" */;
-			buildPhases = (
-				49BD18451859D80700DDCAFB /* Sources */,
-				49BD18461859D80700DDCAFB /* Frameworks */,
-				49BD18471859D80700DDCAFB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49BD184F1859D80700DDCAFB /* PBXTargetDependency */,
-			);
-			name = iBeaconParticleFilterTests;
-			productName = iBeaconParticleFilterTests;
-			productReference = 49BD18491859D80700DDCAFB /* iBeaconParticleFilterTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -240,9 +197,6 @@
 				TargetAttributes = {
 					49BD18271859D80700DDCAFB = {
 						DevelopmentTeam = YHYQS23LRF;
-					};
-					49BD18481859D80700DDCAFB = {
-						TestTargetID = 49BD18271859D80700DDCAFB;
 					};
 				};
 			};
@@ -260,7 +214,6 @@
 			projectRoot = "";
 			targets = (
 				49BD18271859D80700DDCAFB /* iBeaconParticleFilter */,
-				49BD18481859D80700DDCAFB /* iBeaconParticleFilterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,13 +226,6 @@
 				49BD18441859D80700DDCAFB /* Images.xcassets in Resources */,
 				49BD18361859D80700DDCAFB /* InfoPlist.strings in Resources */,
 				49BD183F1859D80700DDCAFB /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49BD18471859D80700DDCAFB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,22 +281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49BD18451859D80700DDCAFB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		49BD184F1859D80700DDCAFB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49BD18271859D80700DDCAFB /* iBeaconParticleFilter */;
-			targetProxy = 49BD184E1859D80700DDCAFB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		49BD18341859D80700DDCAFB /* InfoPlist.strings */ = {
@@ -474,48 +405,6 @@
 			};
 			name = Release;
 		};
-		49BD185E1859D80700DDCAFB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iBeaconParticleFilter.app/iBeaconParticleFilter";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iBeaconParticleFilterTests/iBeaconParticleFilterTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		49BD185F1859D80700DDCAFB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iBeaconParticleFilter.app/iBeaconParticleFilter";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
-				INFOPLIST_FILE = "iBeaconParticleFilterTests/iBeaconParticleFilterTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -533,15 +422,6 @@
 			buildConfigurations = (
 				49BD185B1859D80700DDCAFB /* Debug */,
 				49BD185C1859D80700DDCAFB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49BD185D1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconParticleFilterTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49BD185E1859D80700DDCAFB /* Debug */,
-				49BD185F1859D80700DDCAFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
