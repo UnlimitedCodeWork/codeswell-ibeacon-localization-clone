@@ -32,6 +32,9 @@
 @end
 
 
+#define INTERFERENCEFUDGEFACTOR 2.30
+
+
 @implementation CWLBeaconLandmark
 
 + (CWLBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color {
@@ -98,11 +101,14 @@
 }
 
 - (float)metersFromRssi:(NSInteger)rssi {
+
+    // Based on measurement of Estimote beacons in open air, power = 0
+    // float ret = 0.0007109 * expf(0.1114483*-rssi);
     
-    // Based on measurement of Estimote beacons, power set at -8
+    // Based on measurement of Estimote beacons in open air, power = -8
+    float ret = 0.0003351 * expf(0.1103220*-rssi);
     
-    //    float ret = 8.6604 * logf(-rssi) + 72.971;
-    float ret = 0.0003 * expf(0.1122*-rssi);
+    ret *= INTERFERENCEFUDGEFACTOR;
     
     return ret;
 }

@@ -94,7 +94,7 @@
             CGFloat y = landmark.y * self.pxPerMeter;
             rect = [self rectForCircleX:x y:y radius:landmark.meters * self.pxPerMeter];
             
-            float dashLengths[] = {10, 10};
+            const CGFloat dashLengths[] = {10, 10};
             CGContextSetLineDash(context, 0.0, dashLengths, 2);
             CGContextSetLineWidth(context, self.currentDistanceArcLineWidth);
             CGContextSetStrokeColorWithColor(context, landmark.color.CGColor);

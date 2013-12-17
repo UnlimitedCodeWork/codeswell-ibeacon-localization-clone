@@ -33,8 +33,8 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 #define XBOUND 7.0
 #define YBOUND 5.0
 #define INSET 0.4
-#define MEASUREMENTVARIANCE 2.0
-#define NOISEVARIANCE 0.25
+#define MEASUREMENTSIGMA 3.0
+#define NOISESIGMA 0.10
 
 
 @implementation CWLViewController
@@ -150,7 +150,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
                                            );
             
             float error = landmark.meters - expectedDistance;
-            confidence *= [self confidenceFromDisplacement:error sigma:MEASUREMENTVARIANCE];
+            confidence *= [self confidenceFromDisplacement:error sigma:MEASUREMENTSIGMA];
         }
     }
     
@@ -163,8 +163,8 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     
     // Create new particle from old and add gaussian noise
     CWLPointParticle* ret = [[CWLPointParticle alloc] init];
-    ret.x = p.x + box_muller(0.0, NOISEVARIANCE);
-    ret.y = p.y + box_muller(0.0, NOISEVARIANCE);
+    ret.x = p.x + box_muller(0.0, NOISESIGMA);
+    ret.y = p.y + box_muller(0.0, NOISESIGMA);
     
     return ret;
 }
@@ -222,10 +222,10 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     CWLBeaconLandmark* landmark = self.landmarks[indexPath.row];
     
     // Configure the cell...
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%ld)", landmark.ident, (long)landmark.rssi];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%lddB)", landmark.ident, (long)landmark.rssi];
     cell.textLabel.textColor = landmark.color;
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"range: %4.2fm  mean: %4.2fm  std. dev: ±%4.2f",
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"range: %4.2fm  mean: %4.2fdB  std. dev: ±%4.2f",
                                  landmark.meters, landmark.meanRssi, landmark.stdDeviationRssi];
     
     return cell;
