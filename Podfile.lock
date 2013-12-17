@@ -1,0 +1,22 @@
+PODS:
+  - CocoaLumberjack (1.6.5.1):
+    - CocoaLumberjack/Core
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.6.5.1)
+  - CocoaLumberjack/Extensions (1.6.5.1):
+    - CocoaLumberjack/Core
+  - EstimoteSDK (1.2.0)
+
+DEPENDENCIES:
+  - CocoaLumberjack
+  - EstimoteSDK (from `https://github.com/Estimote/iOS-SDK.git`)
+
+EXTERNAL SOURCES:
+  EstimoteSDK:
+    :git: https://github.com/Estimote/iOS-SDK.git
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
+  EstimoteSDK: de3106314f610a4f2c7ef5f88b6f739ecd3e3ea9
+
+COCOAPODS: 0.28.0

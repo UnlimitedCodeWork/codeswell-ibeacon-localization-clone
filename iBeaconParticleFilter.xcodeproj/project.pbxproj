@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794311859E1CE00D6A640 /* CWLParticleFilter.m */; };
+		496794351859E95600D6A640 /* CWLPointParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794341859E95600D6A640 /* CWLPointParticle.m */; };
+		4967943C1859EE4700D6A640 /* CWLArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967943B1859EE4700D6A640 /* CWLArenaView.m */; };
+		49679441185A066600D6A640 /* boxmuller.c in Sources */ = {isa = PBXBuildFile; fileRef = 4967943F185A066600D6A640 /* boxmuller.c */; };
+		49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679443185A101E00D6A640 /* CWLParticleBase.m */; };
+		49679447185A202400D6A640 /* CWLBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679446185A202400D6A640 /* CWLBeaconLandmark.m */; };
 		49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
 		49BD182E1859D80700DDCAFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182D1859D80700DDCAFB /* CoreGraphics.framework */; };
 		49BD18301859D80700DDCAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182F1859D80700DDCAFB /* UIKit.framework */; };
@@ -16,24 +22,24 @@
 		49BD183F1859D80700DDCAFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49BD183D1859D80700DDCAFB /* Main.storyboard */; };
 		49BD18421859D80700DDCAFB /* CWLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BD18411859D80700DDCAFB /* CWLViewController.m */; };
 		49BD18441859D80700DDCAFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49BD18431859D80700DDCAFB /* Images.xcassets */; };
-		49BD184B1859D80700DDCAFB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD184A1859D80700DDCAFB /* XCTest.framework */; };
-		49BD184C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
-		49BD184D1859D80700DDCAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182F1859D80700DDCAFB /* UIKit.framework */; };
-		49BD18551859D80700DDCAFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49BD18531859D80700DDCAFB /* InfoPlist.strings */; };
-		49BD18571859D80700DDCAFB /* iBeaconParticleFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BD18561859D80700DDCAFB /* iBeaconParticleFilterTests.m */; };
+		650AAB6CD8514A0398C2EA72 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B4F9C280BF424298CDD392 /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		49BD184E1859D80700DDCAFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49BD18201859D80700DDCAFB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49BD18271859D80700DDCAFB;
-			remoteInfo = iBeaconParticleFilter;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		01B4F9C280BF424298CDD392 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		496794301859E1CE00D6A640 /* CWLParticleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleFilter.h; sourceTree = "<group>"; };
+		496794311859E1CE00D6A640 /* CWLParticleFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleFilter.m; sourceTree = "<group>"; };
+		496794331859E95600D6A640 /* CWLPointParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLPointParticle.h; sourceTree = "<group>"; };
+		496794341859E95600D6A640 /* CWLPointParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLPointParticle.m; sourceTree = "<group>"; };
+		4967943A1859EE4700D6A640 /* CWLArenaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLArenaView.h; sourceTree = "<group>"; };
+		4967943B1859EE4700D6A640 /* CWLArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLArenaView.m; sourceTree = "<group>"; };
+		4967943F185A066600D6A640 /* boxmuller.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = boxmuller.c; sourceTree = "<group>"; };
+		49679440185A066600D6A640 /* boxmuller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boxmuller.h; sourceTree = "<group>"; };
+		49679442185A101E00D6A640 /* CWLParticleBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleBase.h; sourceTree = "<group>"; };
+		49679443185A101E00D6A640 /* CWLParticleBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleBase.m; sourceTree = "<group>"; };
+		49679445185A202400D6A640 /* CWLBeaconLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLBeaconLandmark.h; sourceTree = "<group>"; };
+		49679446185A202400D6A640 /* CWLBeaconLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLBeaconLandmark.m; sourceTree = "<group>"; };
 		49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconParticleFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BD182B1859D80700DDCAFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49BD182D1859D80700DDCAFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,11 +54,7 @@
 		49BD18401859D80700DDCAFB /* CWLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWLViewController.h; sourceTree = "<group>"; };
 		49BD18411859D80700DDCAFB /* CWLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWLViewController.m; sourceTree = "<group>"; };
 		49BD18431859D80700DDCAFB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		49BD18491859D80700DDCAFB /* iBeaconParticleFilterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBeaconParticleFilterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BD184A1859D80700DDCAFB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		49BD18521859D80700DDCAFB /* iBeaconParticleFilterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iBeaconParticleFilterTests-Info.plist"; sourceTree = "<group>"; };
-		49BD18541859D80700DDCAFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		49BD18561859D80700DDCAFB /* iBeaconParticleFilterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iBeaconParticleFilterTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,29 +65,53 @@
 				49BD182E1859D80700DDCAFB /* CoreGraphics.framework in Frameworks */,
 				49BD18301859D80700DDCAFB /* UIKit.framework in Frameworks */,
 				49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49BD18461859D80700DDCAFB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49BD184B1859D80700DDCAFB /* XCTest.framework in Frameworks */,
-				49BD184D1859D80700DDCAFB /* UIKit.framework in Frameworks */,
-				49BD184C1859D80700DDCAFB /* Foundation.framework in Frameworks */,
+				650AAB6CD8514A0398C2EA72 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4967942F1859E1CE00D6A640 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				49679442185A101E00D6A640 /* CWLParticleBase.h */,
+				49679443185A101E00D6A640 /* CWLParticleBase.m */,
+				496794301859E1CE00D6A640 /* CWLParticleFilter.h */,
+				496794311859E1CE00D6A640 /* CWLParticleFilter.m */,
+				496794331859E95600D6A640 /* CWLPointParticle.h */,
+				496794341859E95600D6A640 /* CWLPointParticle.m */,
+				49679445185A202400D6A640 /* CWLBeaconLandmark.h */,
+				49679446185A202400D6A640 /* CWLBeaconLandmark.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		496794391859EE4700D6A640 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				4967943A1859EE4700D6A640 /* CWLArenaView.h */,
+				4967943B1859EE4700D6A640 /* CWLArenaView.m */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		4967943E185A066600D6A640 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4967943F185A066600D6A640 /* boxmuller.c */,
+				49679440185A066600D6A640 /* boxmuller.h */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		49BD181F1859D80700DDCAFB = {
 			isa = PBXGroup;
 			children = (
 				49BD18311859D80700DDCAFB /* iBeaconParticleFilter */,
-				49BD18501859D80700DDCAFB /* iBeaconParticleFilterTests */,
 				49BD182A1859D80700DDCAFB /* Frameworks */,
 				49BD18291859D80700DDCAFB /* Products */,
+				0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */,
-				49BD18491859D80700DDCAFB /* iBeaconParticleFilterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +130,7 @@
 				49BD182D1859D80700DDCAFB /* CoreGraphics.framework */,
 				49BD182F1859D80700DDCAFB /* UIKit.framework */,
 				49BD184A1859D80700DDCAFB /* XCTest.framework */,
+				01B4F9C280BF424298CDD392 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,6 +138,9 @@
 		49BD18311859D80700DDCAFB /* iBeaconParticleFilter */ = {
 			isa = PBXGroup;
 			children = (
+				4967943E185A066600D6A640 /* Helpers */,
+				4967942F1859E1CE00D6A640 /* Model */,
+				496794391859EE4700D6A640 /* UIElements */,
 				49BD183A1859D80700DDCAFB /* CWLAppDelegate.h */,
 				49BD183B1859D80700DDCAFB /* CWLAppDelegate.m */,
 				49BD183D1859D80700DDCAFB /* Main.storyboard */,
@@ -134,24 +163,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		49BD18501859D80700DDCAFB /* iBeaconParticleFilterTests */ = {
-			isa = PBXGroup;
-			children = (
-				49BD18561859D80700DDCAFB /* iBeaconParticleFilterTests.m */,
-				49BD18511859D80700DDCAFB /* Supporting Files */,
-			);
-			path = iBeaconParticleFilterTests;
-			sourceTree = "<group>";
-		};
-		49BD18511859D80700DDCAFB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				49BD18521859D80700DDCAFB /* iBeaconParticleFilterTests-Info.plist */,
-				49BD18531859D80700DDCAFB /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49BD185A1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconParticleFilter" */;
 			buildPhases = (
+				38EFE6CD7ECA47DEA66DCAC3 /* Check Pods Manifest.lock */,
 				49BD18241859D80700DDCAFB /* Sources */,
 				49BD18251859D80700DDCAFB /* Frameworks */,
 				49BD18261859D80700DDCAFB /* Resources */,
+				E77B90778DA249A9A84BA82F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,24 +184,6 @@
 			productName = iBeaconParticleFilter;
 			productReference = 49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */;
 			productType = "com.apple.product-type.application";
-		};
-		49BD18481859D80700DDCAFB /* iBeaconParticleFilterTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49BD185D1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconParticleFilterTests" */;
-			buildPhases = (
-				49BD18451859D80700DDCAFB /* Sources */,
-				49BD18461859D80700DDCAFB /* Frameworks */,
-				49BD18471859D80700DDCAFB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49BD184F1859D80700DDCAFB /* PBXTargetDependency */,
-			);
-			name = iBeaconParticleFilterTests;
-			productName = iBeaconParticleFilterTests;
-			productReference = 49BD18491859D80700DDCAFB /* iBeaconParticleFilterTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -202,9 +197,6 @@
 				TargetAttributes = {
 					49BD18271859D80700DDCAFB = {
 						DevelopmentTeam = YHYQS23LRF;
-					};
-					49BD18481859D80700DDCAFB = {
-						TestTargetID = 49BD18271859D80700DDCAFB;
 					};
 				};
 			};
@@ -222,7 +214,6 @@
 			projectRoot = "";
 			targets = (
 				49BD18271859D80700DDCAFB /* iBeaconParticleFilter */,
-				49BD18481859D80700DDCAFB /* iBeaconParticleFilterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,44 +229,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49BD18471859D80700DDCAFB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38EFE6CD7ECA47DEA66DCAC3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49BD18551859D80700DDCAFB /* InfoPlist.strings in Resources */,
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		E77B90778DA249A9A84BA82F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		49BD18241859D80700DDCAFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49679447185A202400D6A640 /* CWLBeaconLandmark.m in Sources */,
+				496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */,
+				49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */,
 				49BD18381859D80700DDCAFB /* main.m in Sources */,
+				496794351859E95600D6A640 /* CWLPointParticle.m in Sources */,
 				49BD18421859D80700DDCAFB /* CWLViewController.m in Sources */,
+				4967943C1859EE4700D6A640 /* CWLArenaView.m in Sources */,
+				49679441185A066600D6A640 /* boxmuller.c in Sources */,
 				49BD183C1859D80700DDCAFB /* CWLAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49BD18451859D80700DDCAFB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49BD18571859D80700DDCAFB /* iBeaconParticleFilterTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		49BD184F1859D80700DDCAFB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49BD18271859D80700DDCAFB /* iBeaconParticleFilter */;
-			targetProxy = 49BD184E1859D80700DDCAFB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		49BD18341859D80700DDCAFB /* InfoPlist.strings */ = {
@@ -292,14 +298,6 @@
 				49BD183E1859D80700DDCAFB /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		49BD18531859D80700DDCAFB /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				49BD18541859D80700DDCAFB /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -379,6 +377,7 @@
 		};
 		49BD185B1859D80700DDCAFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -393,6 +392,7 @@
 		};
 		49BD185C1859D80700DDCAFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -402,48 +402,6 @@
 				INFOPLIST_FILE = "iBeaconParticleFilter/iBeaconParticleFilter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		49BD185E1859D80700DDCAFB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iBeaconParticleFilter.app/iBeaconParticleFilter";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iBeaconParticleFilterTests/iBeaconParticleFilterTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		49BD185F1859D80700DDCAFB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iBeaconParticleFilter.app/iBeaconParticleFilter";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
-				INFOPLIST_FILE = "iBeaconParticleFilterTests/iBeaconParticleFilterTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -466,14 +424,7 @@
 				49BD185C1859D80700DDCAFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		49BD185D1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconParticleFilterTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49BD185E1859D80700DDCAFB /* Debug */,
-				49BD185F1859D80700DDCAFB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
