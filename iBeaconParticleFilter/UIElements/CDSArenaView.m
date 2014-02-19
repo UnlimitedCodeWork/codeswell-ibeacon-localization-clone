@@ -1,5 +1,5 @@
 //
-//  CWLArenaView.m
+//  CDSArenaView.m
 //  iBeaconParticleFilter
 //
 //  Created by Andrew Craze on 12/12/13.
@@ -64,9 +64,9 @@
             CGRect rect = [self rectForCircleX:x y:y radius:landmark.meanMeters * self.pxPerMeter];
             
             CGContextSetLineDash(context, 0.0, NULL, 0);
-            float varianceFactor = 2.0; // 2 (one sigma on each side) = 66% likely
-            //float varianceFactor = 4.0; // 4 (two sigma on each side) = 95% likely
-            //float varianceFactor = 6.0; // 6 (three sigma on each side) = 99.7% likely
+            double varianceFactor = 2.0; // 2 (one sigma on each side) = 66% likely
+            //double varianceFactor = 4.0; // 4 (two sigma on each side) = 95% likely
+            //double varianceFactor = 6.0; // 6 (three sigma on each side) = 99.7% likely
             CGContextSetLineWidth(context, landmark.meanMetersVariance * varianceFactor * self.pxPerMeter);
             CGContextSetStrokeColorWithColor(context, self.meanDistanceVarianceRingLineColor);
             CGContextStrokeEllipseInRect(context, rect);
@@ -127,7 +127,7 @@
     // Draw particles
     CGContextSetFillColorWithColor(context, self.particleColor);
     
-    for (CDSPointParticle* particle in self.particles) {
+    for (CDSXYParticle* particle in self.particles) {
         CGRect rect = [self rectForCircleX:particle.x * self.pxPerMeter y:particle.y * self.pxPerMeter
                                     radius:self.particleRadius];
         CGContextFillEllipseInRect (context, rect);

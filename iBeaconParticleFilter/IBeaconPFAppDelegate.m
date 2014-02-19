@@ -1,5 +1,5 @@
 //
-//  CWLAppDelegate.m
+//  CDSAppDelegate.m
 //  iBeaconParticleFilter
 //
 //  Created by Andrew Craze on 12/12/13.

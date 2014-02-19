@@ -1,5 +1,5 @@
 //
-//  CWLViewController.h
+//  CDSViewController.h
 //  iBeaconParticleFilter
 //
 //  Created by Andrew Craze on 12/12/13.

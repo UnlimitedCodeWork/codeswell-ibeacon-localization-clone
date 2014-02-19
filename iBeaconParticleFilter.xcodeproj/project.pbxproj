@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794311859E1CE00D6A640 /* CWLParticleFilter.m */; };
-		496794351859E95600D6A640 /* CDSPointParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794341859E95600D6A640 /* CDSPointParticle.m */; };
 		4967943C1859EE4700D6A640 /* CDSArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967943B1859EE4700D6A640 /* CDSArenaView.m */; };
-		49679441185A066600D6A640 /* boxmuller.c in Sources */ = {isa = PBXBuildFile; fileRef = 4967943F185A066600D6A640 /* boxmuller.c */; };
-		49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679443185A101E00D6A640 /* CWLParticleBase.m */; };
 		49679447185A202400D6A640 /* CDSBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679446185A202400D6A640 /* CDSBeaconLandmark.m */; };
 		49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
 		49BD182E1859D80700DDCAFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182D1859D80700DDCAFB /* CoreGraphics.framework */; };
@@ -28,16 +24,8 @@
 /* Begin PBXFileReference section */
 		01B4F9C280BF424298CDD392 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		496794301859E1CE00D6A640 /* CWLParticleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleFilter.h; sourceTree = "<group>"; };
-		496794311859E1CE00D6A640 /* CWLParticleFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleFilter.m; sourceTree = "<group>"; };
-		496794331859E95600D6A640 /* CDSPointParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSPointParticle.h; sourceTree = "<group>"; };
-		496794341859E95600D6A640 /* CDSPointParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSPointParticle.m; sourceTree = "<group>"; };
 		4967943A1859EE4700D6A640 /* CDSArenaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSArenaView.h; sourceTree = "<group>"; };
 		4967943B1859EE4700D6A640 /* CDSArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSArenaView.m; sourceTree = "<group>"; };
-		4967943F185A066600D6A640 /* boxmuller.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = boxmuller.c; sourceTree = "<group>"; };
-		49679440185A066600D6A640 /* boxmuller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boxmuller.h; sourceTree = "<group>"; };
-		49679442185A101E00D6A640 /* CWLParticleBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleBase.h; sourceTree = "<group>"; };
-		49679443185A101E00D6A640 /* CWLParticleBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleBase.m; sourceTree = "<group>"; };
 		49679445185A202400D6A640 /* CDSBeaconLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSBeaconLandmark.h; sourceTree = "<group>"; };
 		49679446185A202400D6A640 /* CDSBeaconLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSBeaconLandmark.m; sourceTree = "<group>"; };
 		49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconParticleFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,12 +63,6 @@
 		4967942F1859E1CE00D6A640 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				49679442185A101E00D6A640 /* CWLParticleBase.h */,
-				49679443185A101E00D6A640 /* CWLParticleBase.m */,
-				496794301859E1CE00D6A640 /* CWLParticleFilter.h */,
-				496794311859E1CE00D6A640 /* CWLParticleFilter.m */,
-				496794331859E95600D6A640 /* CDSPointParticle.h */,
-				496794341859E95600D6A640 /* CDSPointParticle.m */,
 				49679445185A202400D6A640 /* CDSBeaconLandmark.h */,
 				49679446185A202400D6A640 /* CDSBeaconLandmark.m */,
 			);
@@ -94,15 +76,6 @@
 				4967943B1859EE4700D6A640 /* CDSArenaView.m */,
 			);
 			path = UIElements;
-			sourceTree = "<group>";
-		};
-		4967943E185A066600D6A640 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				4967943F185A066600D6A640 /* boxmuller.c */,
-				49679440185A066600D6A640 /* boxmuller.h */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		49BD181F1859D80700DDCAFB = {
@@ -138,7 +111,6 @@
 		49BD18311859D80700DDCAFB /* iBeaconParticleFilter */ = {
 			isa = PBXGroup;
 			children = (
-				4967943E185A066600D6A640 /* Helpers */,
 				4967942F1859E1CE00D6A640 /* Model */,
 				496794391859EE4700D6A640 /* UIElements */,
 				49BD183A1859D80700DDCAFB /* IBeaconPFAppDelegate.h */,
@@ -270,13 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				49679447185A202400D6A640 /* CDSBeaconLandmark.m in Sources */,
-				496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */,
-				49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */,
 				49BD18381859D80700DDCAFB /* main.m in Sources */,
-				496794351859E95600D6A640 /* CDSPointParticle.m in Sources */,
 				49BD18421859D80700DDCAFB /* CDSiBeaconPFViewController.m in Sources */,
 				4967943C1859EE4700D6A640 /* CDSArenaView.m in Sources */,
-				49679441185A066600D6A640 /* boxmuller.c in Sources */,
 				49BD183C1859D80700DDCAFB /* IBeaconPFAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

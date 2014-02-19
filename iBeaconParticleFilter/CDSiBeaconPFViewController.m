@@ -1,5 +1,5 @@
 //
-//  CWLViewController.m
+//  CDSViewController.m
 //  iBeaconParticleFilter
 //
 //  Created by Andrew Craze on 12/12/13.
@@ -7,18 +7,17 @@
 //
 
 #import "CDSiBeaconPFViewController.h"
-#import "CWLParticleFilter.h"
+#import "CDSXYParticleFilter.h"
 #import "CDSArenaView.h"
-#import "boxmuller.h"
 
 #import "ESTBeaconManager.h"
 
-@interface CDSiBeaconPFViewController () <CWLParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate, ESTBeaconManagerDelegate>
+@interface CDSiBeaconPFViewController () <CDSXYParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate, ESTBeaconManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *beaconTable;
 @property (weak, nonatomic) IBOutlet CDSArenaView *arenaView;
 
-@property (nonatomic, strong) CWLParticleFilter* particleFilter;
+@property (nonatomic, strong) CDSXYParticleFilter* particleFilter;
 @property (nonatomic, strong) NSArray* landmarks;
 @property (nonatomic, strong) NSDictionary* landmarkHash;
 @property (nonatomic, strong) NSTimer* timer;
@@ -34,7 +33,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 #define YBOUND 5.0
 #define INSET 0.4
 #define MEASUREMENTSIGMA 3.0
-#define NOISESIGMA 0.10
+#define NOISESIGMA 0.2
 
 
 @implementation CDSiBeaconPFViewController
@@ -55,9 +54,12 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 - (void)viewWillAppear:(BOOL)animated {
     
     if (self.particleFilter == nil) {
-        self.particleFilter = [[CWLParticleFilter alloc] initWithSize:self.arenaView.bounds.size
-                                                            landmarks:nil
-                                                        particleCount:250];
+        self.particleFilter = [[CDSXYParticleFilter alloc] initWithParticleCount:250
+                                                                            minX:0.0
+                                                                            maxX:self.arenaView.bounds.size.width
+                                                                            minY:0.0
+                                                                            maxY:self.arenaView.bounds.size.height
+                                                                      noiseSigma:NOISESIGMA];
         self.particleFilter.delegate = self;
     }
     
@@ -102,30 +104,19 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 }
 
 - (void)advanceParticleFilter {
-    [self.particleFilter move];
-    [self.particleFilter sense:self.landmarks];
+    [self.particleFilter applyMotion];
+    [self.particleFilter applyMeasurements:self.landmarks];
 }
 
 
-#pragma mark CWLParticleFilterDelegate Protocol
+#pragma mark CDSXYParticleFilterDelegate protocol
 
-- (CWLParticleBase*)newParticleForParticleFilter:(CWLParticleFilter *)filter {
-    
-    CDSPointParticle* ret = [[CDSPointParticle alloc] init];
-    ret.x = (arc4random() % (NSInteger)(XBOUND*1000)) / 1000.0;
-    ret.y = (arc4random() % (NSInteger)(YBOUND*1000)) / 1000.0;
-    DDLogVerbose(@"New particle: (%4.2f,%4.2f)", ret.x, ret.y);
-    
-    return ret;
-}
-
-
-- (void)particleFilter:(CWLParticleFilter*)filter moveParticle:(CWLParticleBase*)particle {
-    CDSPointParticle* p = (CDSPointParticle*)particle;
+- (void)xyParticleFilter:(CDSXYParticleFilter*)filter moveParticle:(CDSXYParticle*)particle {
+    CDSXYParticle* p = particle;
     
     // Calculate incremental movement (There's none in our case)
-    float delta_x = 0.0;
-    float delta_y = 0.0;
+    double delta_x = 0.0;
+    double delta_y = 0.0;
     
     // Apply movement
     p.x += delta_x;
@@ -133,23 +124,23 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 }
 
 
-- (float)particleFilter:(CWLParticleFilter*)filter getLikelihood:(CWLParticleBase*)particle withMeasurements:(id)measurements {
-    CDSPointParticle* p = (CDSPointParticle*)particle;
-
+- (double)xyParticleFilter:(CDSXYParticleFilter*)filter getLikelihood:(CDSXYParticle*)particle withMeasurements:(id)measurements {
+    CDSXYParticle* p = particle;
+    
     NSArray* measuredLandmarks = measurements;
-    float confidence = 1.0;
+    double confidence = 1.0;
     
     for (CDSBeaconLandmark* landmark in measuredLandmarks) {
         
         if (landmark.rssi < -10) {
             
             // Get the expected distance in pixels, using a^2 + b^2 = c^2
-            float expectedDistance = sqrtf(
+            double expectedDistance = sqrtf(
                                            powf((landmark.x-p.x), 2)
                                            + powf((landmark.y-p.y), 2)
                                            );
             
-            float error = landmark.meters - expectedDistance;
+            double error = landmark.meters - expectedDistance;
             confidence *= [self confidenceFromDisplacement:error sigma:MEASUREMENTSIGMA];
         }
     }
@@ -158,19 +149,10 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 }
 
 
-- (CWLParticleBase*)particleFilter:(CWLParticleFilter*)filter particleWithNoiseFromParticle:(CWLParticleBase*)particle {
-    CDSPointParticle* p = (CDSPointParticle*)particle;
-    
-    // Create new particle from old and add gaussian noise
-    CDSPointParticle* ret = [[CDSPointParticle alloc] init];
-    ret.x = p.x + box_muller(0.0, NOISESIGMA);
-    ret.y = p.y + box_muller(0.0, NOISESIGMA);
-    
-    return ret;
-}
+//- (double)xyParticleFilter:(CDSXYParticleFilter*)filter noiseWithMean:(double)m sigma:(double)s;
 
 
-- (void)particleFilter:(CWLParticleFilter*)filter particlesDidAdvance:(NSArray *)particles {
+- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesResampled:(NSArray*)particles {
     self.arenaView.particles = particles;
     [self.arenaView setNeedsDisplay];
 }
@@ -196,7 +178,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
         }
 
         [self.beaconTable reloadData];
-        [self.particleFilter sense:self.landmarks];
+        [self.particleFilter applyMeasurements:self.landmarks];
     }
 }
 
@@ -214,6 +196,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"Known landmarks";
 }
+
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"BeaconCell";
@@ -234,12 +217,12 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 
 #pragma mark Helpers
 
-- (float)confidenceFromDisplacement:(float)displacement sigma:(float)sigma {
+- (double)confidenceFromDisplacement:(double)displacement sigma:(double)sigma {
     
     // Based on http://stackoverflow.com/a/656992/46731
     // No need to normalize it, since the particle filter will normalize all weights
     
-    float ret = exp( -pow(displacement, 2) / (2 * pow(sigma, 2)) );
+    double ret = exp( -pow(displacement, 2) / (2 * pow(sigma, 2)) );
     return ret;
 }
 

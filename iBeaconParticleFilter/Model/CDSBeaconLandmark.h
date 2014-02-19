@@ -1,5 +1,5 @@
 //
-//  CWLBeaconLandmark.h
+//  CDSBeaconLandmark.h
 //  iBeaconParticleFilter
 //
 //  Created by Andrew Craze on 12/12/13.
@@ -11,21 +11,21 @@
 @interface CDSBeaconLandmark : NSObject
 
 @property (nonatomic, readonly) NSString* ident;
-@property (nonatomic, readonly) float x;
-@property (nonatomic, readonly) float y;
+@property (nonatomic, readonly) double x;
+@property (nonatomic, readonly) double y;
 @property (nonatomic, readonly) UIColor* color;
 
 @property (nonatomic, assign) NSInteger rssi;
 // Trailing average and standard deviation of RSSI values
-@property (nonatomic, readonly) float meanRssi;
-@property (nonatomic, readonly) float stdDeviationRssi;
+@property (nonatomic, readonly) double meanRssi;
+@property (nonatomic, readonly) double stdDeviationRssi;
 // Calculated range distances based on above
-@property (nonatomic, readonly) float meters;
-@property (nonatomic, readonly) float meanMeters;
-@property (nonatomic, readonly) float meanMetersVariance;
+@property (nonatomic, readonly) double meters;
+@property (nonatomic, readonly) double meanMeters;
+@property (nonatomic, readonly) double meanMetersVariance;
 
 
-+ (CDSBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color;
++ (CDSBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(double)x y:(double)y color:(UIColor*)color;
 
 // Helpers
 + (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor;

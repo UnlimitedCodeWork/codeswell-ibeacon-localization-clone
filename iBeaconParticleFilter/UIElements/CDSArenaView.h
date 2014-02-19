@@ -1,5 +1,5 @@
 //
-//  CWLArenaView.h
+//  CDSArenaView.h
 //  iBeaconParticleFilter
 //
 //  Created by Andrew Craze on 12/12/13.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CDSPointParticle.h"
+#import "CDSXYParticle.h"
 #import "CDSBeaconLandmark.h"
 
 
@@ -15,6 +15,6 @@
 
 @property (nonatomic, copy) NSArray* particles;
 @property (nonatomic, copy) NSArray* landmarks;
-@property (nonatomic, assign) float pxPerMeter;
+@property (nonatomic, assign) double pxPerMeter;
 
 @end

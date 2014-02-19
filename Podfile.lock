@@ -1,5 +1,5 @@
 PODS:
-  - CDSParticleFilter (0.1)
+  - CDSParticleFilter (0.3)
   - CocoaLumberjack (1.8.1):
     - CocoaLumberjack/Extensions
   - CocoaLumberjack/Core (1.8.1)
@@ -8,17 +8,16 @@ PODS:
   - EstimoteSDK (1.2.0)
 
 DEPENDENCIES:
-  - CDSParticleFilter (from `file:///Users/andrew/Dev/Codeswell/CDSParticleFilter`, branch `develop`)
+  - CDSParticleFilter (from `git@bitbucket.org:codeswell/cdsparticlefilter.git`)
   - CocoaLumberjack
   - EstimoteSDK (= 1.2.0)
 
 EXTERNAL SOURCES:
   CDSParticleFilter:
-    :branch: develop
-    :git: file:///Users/andrew/Dev/Codeswell/CDSParticleFilter
+    :git: git@bitbucket.org:codeswell/cdsparticlefilter.git
 
 SPEC CHECKSUMS:
-  CDSParticleFilter: 92127f6d923032b05e3028c2cd323329376b4a62
+  CDSParticleFilter: 5e18562e05890fc93d0474d67a3c800577a4c301
   CocoaLumberjack: 020378ec400d658923bf5887178394f65f052c90
   EstimoteSDK: 6bfe3bbaae76a23293e35244db94188818063a5a
 
