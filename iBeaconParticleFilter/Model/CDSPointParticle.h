@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CWLParticleBase.h"
 
-@interface CWLPointParticle : CWLParticleBase
+@interface CDSPointParticle : CWLParticleBase
 
 @property (nonatomic, assign) CGFloat x;
 @property (nonatomic, assign) CGFloat y;

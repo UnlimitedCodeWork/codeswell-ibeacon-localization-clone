@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
-#import "CWLAppDelegate.h"
+#import "IBeaconPFAppDelegate.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 
-@implementation CWLAppDelegate
+@implementation IBeaconPFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

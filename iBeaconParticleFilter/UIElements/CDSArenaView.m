@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
-#import "CWLArenaView.h"
+#import "CDSArenaView.h"
 
-@interface CWLArenaView ()
+@interface CDSArenaView ()
 
 @property (nonatomic, assign) BOOL isInitialized;
 
@@ -27,7 +27,7 @@
 
 
 
-@implementation CWLArenaView
+@implementation CDSArenaView
 
 
 - (void)initialize {
@@ -57,7 +57,7 @@
 
     
     // Draw variance arcs, if needed
-    for (CWLBeaconLandmark* landmark in self.landmarks) {
+    for (CDSBeaconLandmark* landmark in self.landmarks) {
         if (landmark.meanRssi < -1) {
             CGFloat x = landmark.x * self.pxPerMeter;
             CGFloat y = landmark.y * self.pxPerMeter;
@@ -74,7 +74,7 @@
     }
     
     // Draw mean arcs, if needed
-    for (CWLBeaconLandmark* landmark in self.landmarks) {
+    for (CDSBeaconLandmark* landmark in self.landmarks) {
         if (landmark.rssi < -1) {
             CGFloat x = landmark.x * self.pxPerMeter;
             CGFloat y = landmark.y * self.pxPerMeter;
@@ -88,7 +88,7 @@
     
         
     // Draw current measurement arc
-    for (CWLBeaconLandmark* landmark in self.landmarks) {
+    for (CDSBeaconLandmark* landmark in self.landmarks) {
         if (landmark.rssi < -1) {
             CGFloat x = landmark.x * self.pxPerMeter;
             CGFloat y = landmark.y * self.pxPerMeter;
@@ -104,7 +104,7 @@
     
     
     // Draw landmarks and active rings
-    for (CWLBeaconLandmark* landmark in self.landmarks) {
+    for (CDSBeaconLandmark* landmark in self.landmarks) {
         
         // Draw landmark
         CGFloat x = landmark.x * self.pxPerMeter;
@@ -127,7 +127,7 @@
     // Draw particles
     CGContextSetFillColorWithColor(context, self.particleColor);
     
-    for (CWLPointParticle* particle in self.particles) {
+    for (CDSPointParticle* particle in self.particles) {
         CGRect rect = [self rectForCircleX:particle.x * self.pxPerMeter y:particle.y * self.pxPerMeter
                                     radius:self.particleRadius];
         CGContextFillEllipseInRect (context, rect);

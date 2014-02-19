@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
-#import "CWLBeaconLandmark.h"
+#import "CDSBeaconLandmark.h"
 
-@interface CWLBeaconLandmark ()
+@interface CDSBeaconLandmark ()
 
 // Set-once stuff
 @property (nonatomic, strong) NSString* ident;
@@ -35,10 +35,10 @@
 #define INTERFERENCEFUDGEFACTOR 2.30
 
 
-@implementation CWLBeaconLandmark
+@implementation CDSBeaconLandmark
 
-+ (CWLBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color {
-    CWLBeaconLandmark* ret = [[CWLBeaconLandmark alloc] init];
++ (CDSBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color {
+    CDSBeaconLandmark* ret = [[CDSBeaconLandmark alloc] init];
     ret.ident = ident;
     ret.x = x;
     ret.y = y;

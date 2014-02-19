@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
-#import "CWLViewController.h"
+#import "CDSiBeaconPFViewController.h"
 #import "CWLParticleFilter.h"
-#import "CWLArenaView.h"
+#import "CDSArenaView.h"
 #import "boxmuller.h"
 
 #import "ESTBeaconManager.h"
 
-@interface CWLViewController () <CWLParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate, ESTBeaconManagerDelegate>
+@interface CDSiBeaconPFViewController () <CWLParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate, ESTBeaconManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *beaconTable;
-@property (weak, nonatomic) IBOutlet CWLArenaView *arenaView;
+@property (weak, nonatomic) IBOutlet CDSArenaView *arenaView;
 
 @property (nonatomic, strong) CWLParticleFilter* particleFilter;
 @property (nonatomic, strong) NSArray* landmarks;
@@ -37,7 +37,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 #define NOISESIGMA 0.10
 
 
-@implementation CWLViewController
+@implementation CDSiBeaconPFViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,15 +63,15 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     
     if (self.landmarks == nil) {
         self.landmarks = @[
-                           [CWLBeaconLandmark landmarkWithIdent:[CWLBeaconLandmark identFromMajor:18900 minor:1234]
+                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:18900 minor:1234]
                                                               x:INSET
                                                               y:INSET
                                                           color:[UIColor greenColor]],
-                           [CWLBeaconLandmark landmarkWithIdent:[CWLBeaconLandmark identFromMajor:18900 minor:567]
+                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:18900 minor:567]
                                                               x:XBOUND-INSET
                                                               y:INSET
                                                           color:[UIColor purpleColor]],
-                           [CWLBeaconLandmark landmarkWithIdent:[CWLBeaconLandmark identFromMajor:18900 minor:89]
+                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:18900 minor:89]
                                                               x:XBOUND/2.0
                                                               y:YBOUND
                                                           color:[UIColor blueColor]]
@@ -79,7 +79,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
         self.arenaView.landmarks = self.landmarks;
         
         NSMutableDictionary* tmpLandmarkHash = [NSMutableDictionary dictionary];
-        for (CWLBeaconLandmark* landmark in self.landmarks) {
+        for (CDSBeaconLandmark* landmark in self.landmarks) {
             tmpLandmarkHash[landmark.ident] = landmark;
         }
         self.landmarkHash = tmpLandmarkHash;
@@ -111,7 +111,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 
 - (CWLParticleBase*)newParticleForParticleFilter:(CWLParticleFilter *)filter {
     
-    CWLPointParticle* ret = [[CWLPointParticle alloc] init];
+    CDSPointParticle* ret = [[CDSPointParticle alloc] init];
     ret.x = (arc4random() % (NSInteger)(XBOUND*1000)) / 1000.0;
     ret.y = (arc4random() % (NSInteger)(YBOUND*1000)) / 1000.0;
     DDLogVerbose(@"New particle: (%4.2f,%4.2f)", ret.x, ret.y);
@@ -121,7 +121,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 
 
 - (void)particleFilter:(CWLParticleFilter*)filter moveParticle:(CWLParticleBase*)particle {
-    CWLPointParticle* p = (CWLPointParticle*)particle;
+    CDSPointParticle* p = (CDSPointParticle*)particle;
     
     // Calculate incremental movement (There's none in our case)
     float delta_x = 0.0;
@@ -134,12 +134,12 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 
 
 - (float)particleFilter:(CWLParticleFilter*)filter getLikelihood:(CWLParticleBase*)particle withMeasurements:(id)measurements {
-    CWLPointParticle* p = (CWLPointParticle*)particle;
+    CDSPointParticle* p = (CDSPointParticle*)particle;
 
     NSArray* measuredLandmarks = measurements;
     float confidence = 1.0;
     
-    for (CWLBeaconLandmark* landmark in measuredLandmarks) {
+    for (CDSBeaconLandmark* landmark in measuredLandmarks) {
         
         if (landmark.rssi < -10) {
             
@@ -159,10 +159,10 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 
 
 - (CWLParticleBase*)particleFilter:(CWLParticleFilter*)filter particleWithNoiseFromParticle:(CWLParticleBase*)particle {
-    CWLPointParticle* p = (CWLPointParticle*)particle;
+    CDSPointParticle* p = (CDSPointParticle*)particle;
     
     // Create new particle from old and add gaussian noise
-    CWLPointParticle* ret = [[CWLPointParticle alloc] init];
+    CDSPointParticle* ret = [[CDSPointParticle alloc] init];
     ret.x = p.x + box_muller(0.0, NOISESIGMA);
     ret.y = p.y + box_muller(0.0, NOISESIGMA);
     
@@ -184,14 +184,14 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 {
     if ([region.identifier isEqualToString:beaconRegionId]) {
         
-        [self.landmarks enumerateObjectsUsingBlock:^(CWLBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
+        [self.landmarks enumerateObjectsUsingBlock:^(CDSBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
             landmark.rssi = 0;
         }];
         
         for (ESTBeacon* beacon in beacons) {
-            NSString* ident = [CWLBeaconLandmark identFromMajor:[beacon.major integerValue] minor:[beacon.minor integerValue]];
+            NSString* ident = [CDSBeaconLandmark identFromMajor:[beacon.major integerValue] minor:[beacon.minor integerValue]];
             
-            CWLBeaconLandmark* landmark = self.landmarkHash[ident];
+            CDSBeaconLandmark* landmark = self.landmarkHash[ident];
             landmark.rssi = beacon.rssi;
         }
 
@@ -219,7 +219,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     static NSString *CellIdentifier = @"BeaconCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    CWLBeaconLandmark* landmark = self.landmarks[indexPath.row];
+    CDSBeaconLandmark* landmark = self.landmarks[indexPath.row];
     
     // Configure the cell...
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%lddB)", landmark.ident, (long)landmark.rssi];

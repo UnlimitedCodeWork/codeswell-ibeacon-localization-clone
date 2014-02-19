@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CWLViewController : UIViewController
+@interface CDSiBeaconPFViewController : UIViewController
 
 @end

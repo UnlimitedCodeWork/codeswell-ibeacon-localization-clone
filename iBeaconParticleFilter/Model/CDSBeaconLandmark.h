@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CWLBeaconLandmark : NSObject
+@interface CDSBeaconLandmark : NSObject
 
 @property (nonatomic, readonly) NSString* ident;
 @property (nonatomic, readonly) float x;
@@ -25,7 +25,7 @@
 @property (nonatomic, readonly) float meanMetersVariance;
 
 
-+ (CWLBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color;
++ (CDSBeaconLandmark*)landmarkWithIdent:(NSString*)ident x:(float)x y:(float)y color:(UIColor*)color;
 
 // Helpers
 + (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor;

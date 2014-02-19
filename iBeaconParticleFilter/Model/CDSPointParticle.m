@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
-#import "CWLPointParticle.h"
+#import "CDSPointParticle.h"
 
-@implementation CWLPointParticle
+@implementation CDSPointParticle
 
 @end

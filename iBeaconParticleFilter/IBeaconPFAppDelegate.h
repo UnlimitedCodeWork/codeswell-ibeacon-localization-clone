@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CWLAppDelegate : UIResponder <UIApplicationDelegate>
+@interface IBeaconPFAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

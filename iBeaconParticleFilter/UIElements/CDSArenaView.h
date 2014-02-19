@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CWLPointParticle.h"
-#import "CWLBeaconLandmark.h"
+#import "CDSPointParticle.h"
+#import "CDSBeaconLandmark.h"
 
 
-@interface CWLArenaView : UIView
+@interface CDSArenaView : UIView
 
 @property (nonatomic, copy) NSArray* particles;
 @property (nonatomic, copy) NSArray* landmarks;
