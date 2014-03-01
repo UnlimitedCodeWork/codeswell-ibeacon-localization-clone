@@ -63,7 +63,8 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     self.beaconMgr.delegate = self;
     self.beaconMgr.avoidUnknownStateBeacons = YES;
     
-    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initRegionWithIdentifier:beaconRegionId];
+    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID
+                                                                  identifier:beaconRegionId];
     [self.beaconMgr startRangingBeaconsInRegion:region];
 }
 
@@ -169,10 +170,15 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 // Optional
 //- (double)xyParticleFilter:(CDSXYParticleFilter*)filter noiseWithMean:(double)m sigma:(double)s;
 
-
-- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesResampled:(NSArray*)particles {
+- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesNormalized:(NSArray*)particles {
     self.arenaView.particles = particles;
     [self.arenaView setNeedsDisplay];
+}
+
+
+- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesResampled:(NSArray*)particles {
+//    self.arenaView.particles = particles;
+//    [self.arenaView setNeedsDisplay];
 }
 
 

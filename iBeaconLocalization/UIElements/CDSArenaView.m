@@ -7,13 +7,15 @@
 //
 
 #import "CDSArenaView.h"
+#import "UIColor+Interpolation.h"
 
 @interface CDSArenaView ()
 
 @property (nonatomic, assign) BOOL isInitialized;
 
 @property (nonatomic, assign) CGFloat particleRadius;
-@property (nonatomic, assign) CGColorRef particleColor;
+@property (nonatomic, strong) UIColor* particleColorCool;
+@property (nonatomic, strong) UIColor* particleColorHot;
 
 @property (nonatomic, assign) CGFloat landmarkRadius;
 @property (nonatomic, assign) CGFloat activeRingLineWidth;
@@ -32,7 +34,8 @@
 
 - (void)initialize {
     self.particleRadius = 1.0;
-    self.particleColor = [UIColor redColor].CGColor;
+    self.particleColorCool = [UIColor blueColor];
+    self.particleColorHot = [UIColor redColor];
     
     self.landmarkRadius = 5.0;
     self.activeRingLineWidth = 2.0;
@@ -125,9 +128,15 @@
 
     
     // Draw particles
-    CGContextSetFillColorWithColor(context, self.particleColor);
-    
+    double maxWeight = [[self.particles valueForKeyPath:@"@max.particleWeight"] doubleValue];
     for (CDSXYParticle* particle in self.particles) {
+        
+        double particleHeat = (particle.particleWeight/maxWeight);
+        UIColor* particleColor = [self.particleColorCool
+                                  colorByInterpolatingWith:self.particleColorHot
+                                  factor:particleHeat];
+        CGContextSetFillColorWithColor(context, particleColor.CGColor);
+        
         CGRect rect = [self rectForCircleX:particle.x * self.pxPerMeter y:particle.y * self.pxPerMeter
                                     radius:self.particleRadius];
         CGContextFillEllipseInRect (context, rect);
@@ -137,6 +146,7 @@
     CGContextFillPath(context);
     
 }
+
 
 - (CGRect)rectForCircleX:(CGFloat)x y:(CGFloat)y radius:(CGFloat)radius {
     
