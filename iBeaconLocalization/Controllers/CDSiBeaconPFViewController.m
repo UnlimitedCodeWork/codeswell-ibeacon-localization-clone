@@ -63,7 +63,8 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     self.beaconMgr.delegate = self;
     self.beaconMgr.avoidUnknownStateBeacons = YES;
     
-    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initRegionWithIdentifier:beaconRegionId];
+    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID
+                                                                  identifier:beaconRegionId];
     [self.beaconMgr startRangingBeaconsInRegion:region];
 }
 
