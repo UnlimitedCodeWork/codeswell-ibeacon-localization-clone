@@ -32,7 +32,7 @@
 @end
 
 
-#define INTERFERENCEFUDGEFACTOR 2.30
+#define INTERFERENCEFUDGEFACTOR 1.75
 
 
 @implementation CDSBeaconLandmark
@@ -97,7 +97,7 @@
 #pragma mark Helpers
 
 + (NSString*)identFromMajor:(NSInteger)major minor:(NSInteger)minor {
-    return [NSString stringWithFormat:@"%ld-%ld", (long)major, (long)minor];
+    return [NSString stringWithFormat:@"%ld/%ld", (long)major, (long)minor];
 }
 
 - (double)metersFromRssi:(NSInteger)rssi {

@@ -28,12 +28,28 @@
 
 
 static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
-#define PXPERMETER (300.0/7.0)
-#define XBOUND 7.0
-#define YBOUND 5.0
-#define INSET 0.4
-#define MEASUREMENTSIGMA 3.0
-#define NOISESIGMA 0.2
+
+// Define the arena (Measurements in meters)
+#define PXPERMETER (320.0/7.0)
+#define ARENAWIDTH 7.0
+#define ARENAHEIGHT 5.0
+// Landmark locations and identification
+#define LANDMARKSMAJOR 18900
+#define LANDMARK1X 0.4
+#define LANDMARK1Y 0.4
+#define LANDMARK1MINOR 1234
+#define LANDMARK2X 6.6
+#define LANDMARK2Y 0.4
+#define LANDMARK2MINOR 567
+#define LANDMARK3X 3.5
+#define LANDMARK3Y 4.6
+#define LANDMARK3MINOR 89
+
+// Filter parameters
+#define PARTICLECOUNT 500
+#define MEASUREMENTINTERVAL 0.5
+#define MEASUREMENTSIGMA 2.0
+#define NOISESIGMA 0.1
 
 
 @implementation CDSiBeaconPFViewController
@@ -54,28 +70,28 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 - (void)viewWillAppear:(BOOL)animated {
     
     if (self.particleFilter == nil) {
-        self.particleFilter = [[CDSXYParticleFilter alloc] initWithParticleCount:250
+        self.particleFilter = [[CDSXYParticleFilter alloc] initWithParticleCount:PARTICLECOUNT
                                                                             minX:0.0
-                                                                            maxX:self.arenaView.bounds.size.width
+                                                                            maxX:ARENAWIDTH
                                                                             minY:0.0
-                                                                            maxY:self.arenaView.bounds.size.height
+                                                                            maxY:ARENAHEIGHT
                                                                       noiseSigma:NOISESIGMA];
         self.particleFilter.delegate = self;
     }
     
     if (self.landmarks == nil) {
         self.landmarks = @[
-                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:18900 minor:1234]
-                                                              x:INSET
-                                                              y:INSET
+                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:LANDMARKSMAJOR minor:LANDMARK1MINOR]
+                                                              x:LANDMARK1X
+                                                              y:LANDMARK1Y
                                                           color:[UIColor greenColor]],
-                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:18900 minor:567]
-                                                              x:XBOUND-INSET
-                                                              y:INSET
+                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:LANDMARKSMAJOR minor:LANDMARK2MINOR]
+                                                              x:LANDMARK2X
+                                                              y:LANDMARK2Y
                                                           color:[UIColor purpleColor]],
-                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:18900 minor:89]
-                                                              x:XBOUND/2.0
-                                                              y:YBOUND
+                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:LANDMARKSMAJOR minor:LANDMARK3MINOR]
+                                                              x:LANDMARK3X
+                                                              y:LANDMARK3Y
                                                           color:[UIColor blueColor]]
                            ];
         self.arenaView.landmarks = self.landmarks;
@@ -87,9 +103,9 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
         self.landmarkHash = tmpLandmarkHash;
     }
         
-    
+// Used for timer-driven measurement/sampling
 //    if (self.timer == nil) {
-//        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+//        self.timer = [NSTimer scheduledTimerWithTimeInterval:MEASUREMENTINTERVAL
 //                                                      target:self
 //                                                    selector:@selector(advanceParticleFilter)
 //                                                    userInfo:nil
@@ -98,15 +114,16 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.timer invalidate];
-    self.timer = nil;
-}
-
-- (void)advanceParticleFilter {
-    [self.particleFilter applyMotion];
-    [self.particleFilter applyMeasurements:self.landmarks];
-}
+// Used for timer-driven measurement/sampling
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [self.timer invalidate];
+//    self.timer = nil;
+//}
+//
+//- (void)advanceParticleFilter {
+//    // [self.particleFilter applyMotion];
+//    [self.particleFilter applyMeasurements:self.landmarks];
+//}
 
 
 #pragma mark CDSXYParticleFilterDelegate protocol
@@ -149,6 +166,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 }
 
 
+// Optional
 //- (double)xyParticleFilter:(CDSXYParticleFilter*)filter noiseWithMean:(double)m sigma:(double)s;
 
 
