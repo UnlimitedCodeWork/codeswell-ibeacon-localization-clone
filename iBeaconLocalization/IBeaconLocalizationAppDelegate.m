@@ -1,16 +1,16 @@
 //
 //  CDSAppDelegate.m
-//  iBeaconParticleFilter
+//  iBeaconLocalization
 //
 //  Created by Andrew Craze on 12/12/13.
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
-#import "IBeaconPFAppDelegate.h"
+#import "IBeaconLocalizationAppDelegate.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 
-@implementation IBeaconPFAppDelegate
+@implementation IBeaconLocalizationAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
