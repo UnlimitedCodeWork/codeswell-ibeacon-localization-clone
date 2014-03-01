@@ -1,16 +1,16 @@
 //
-//  CWLAppDelegate.m
-//  iBeaconParticleFilter
+//  CDSAppDelegate.m
+//  iBeaconLocalization
 //
 //  Created by Andrew Craze on 12/12/13.
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
-#import "CWLAppDelegate.h"
+#import "IBeaconLocalizationAppDelegate.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 
-@implementation CWLAppDelegate
+@implementation IBeaconLocalizationAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
