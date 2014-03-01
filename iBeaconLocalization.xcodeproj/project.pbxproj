@@ -7,54 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794311859E1CE00D6A640 /* CWLParticleFilter.m */; };
-		496794351859E95600D6A640 /* CWLPointParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 496794341859E95600D6A640 /* CWLPointParticle.m */; };
-		4967943C1859EE4700D6A640 /* CWLArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967943B1859EE4700D6A640 /* CWLArenaView.m */; };
-		49679441185A066600D6A640 /* boxmuller.c in Sources */ = {isa = PBXBuildFile; fileRef = 4967943F185A066600D6A640 /* boxmuller.c */; };
-		49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679443185A101E00D6A640 /* CWLParticleBase.m */; };
-		49679447185A202400D6A640 /* CWLBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679446185A202400D6A640 /* CWLBeaconLandmark.m */; };
+		4967943C1859EE4700D6A640 /* CDSArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967943B1859EE4700D6A640 /* CDSArenaView.m */; };
+		49679447185A202400D6A640 /* CDSBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679446185A202400D6A640 /* CDSBeaconLandmark.m */; };
 		49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
 		49BD182E1859D80700DDCAFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182D1859D80700DDCAFB /* CoreGraphics.framework */; };
 		49BD18301859D80700DDCAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182F1859D80700DDCAFB /* UIKit.framework */; };
 		49BD18361859D80700DDCAFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49BD18341859D80700DDCAFB /* InfoPlist.strings */; };
 		49BD18381859D80700DDCAFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BD18371859D80700DDCAFB /* main.m */; };
-		49BD183C1859D80700DDCAFB /* CWLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BD183B1859D80700DDCAFB /* CWLAppDelegate.m */; };
+		49BD183C1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BD183B1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.m */; };
 		49BD183F1859D80700DDCAFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49BD183D1859D80700DDCAFB /* Main.storyboard */; };
-		49BD18421859D80700DDCAFB /* CWLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BD18411859D80700DDCAFB /* CWLViewController.m */; };
 		49BD18441859D80700DDCAFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49BD18431859D80700DDCAFB /* Images.xcassets */; };
+		49C3F80B18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */; };
 		650AAB6CD8514A0398C2EA72 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B4F9C280BF424298CDD392 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01B4F9C280BF424298CDD392 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		496794301859E1CE00D6A640 /* CWLParticleFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleFilter.h; sourceTree = "<group>"; };
-		496794311859E1CE00D6A640 /* CWLParticleFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleFilter.m; sourceTree = "<group>"; };
-		496794331859E95600D6A640 /* CWLPointParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLPointParticle.h; sourceTree = "<group>"; };
-		496794341859E95600D6A640 /* CWLPointParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLPointParticle.m; sourceTree = "<group>"; };
-		4967943A1859EE4700D6A640 /* CWLArenaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLArenaView.h; sourceTree = "<group>"; };
-		4967943B1859EE4700D6A640 /* CWLArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLArenaView.m; sourceTree = "<group>"; };
-		4967943F185A066600D6A640 /* boxmuller.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = boxmuller.c; sourceTree = "<group>"; };
-		49679440185A066600D6A640 /* boxmuller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boxmuller.h; sourceTree = "<group>"; };
-		49679442185A101E00D6A640 /* CWLParticleBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLParticleBase.h; sourceTree = "<group>"; };
-		49679443185A101E00D6A640 /* CWLParticleBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLParticleBase.m; sourceTree = "<group>"; };
-		49679445185A202400D6A640 /* CWLBeaconLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWLBeaconLandmark.h; sourceTree = "<group>"; };
-		49679446185A202400D6A640 /* CWLBeaconLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWLBeaconLandmark.m; sourceTree = "<group>"; };
-		49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconParticleFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4967943A1859EE4700D6A640 /* CDSArenaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSArenaView.h; sourceTree = "<group>"; };
+		4967943B1859EE4700D6A640 /* CDSArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSArenaView.m; sourceTree = "<group>"; };
+		49679445185A202400D6A640 /* CDSBeaconLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSBeaconLandmark.h; sourceTree = "<group>"; };
+		49679446185A202400D6A640 /* CDSBeaconLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSBeaconLandmark.m; sourceTree = "<group>"; };
+		49BD18281859D80700DDCAFB /* iBeaconLocalization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLocalization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BD182B1859D80700DDCAFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49BD182D1859D80700DDCAFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		49BD182F1859D80700DDCAFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		49BD18331859D80700DDCAFB /* iBeaconParticleFilter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iBeaconParticleFilter-Info.plist"; sourceTree = "<group>"; };
+		49BD18331859D80700DDCAFB /* iBeaconLocalization-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iBeaconLocalization-Info.plist"; sourceTree = "<group>"; };
 		49BD18351859D80700DDCAFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49BD18371859D80700DDCAFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		49BD18391859D80700DDCAFB /* iBeaconParticleFilter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iBeaconParticleFilter-Prefix.pch"; sourceTree = "<group>"; };
-		49BD183A1859D80700DDCAFB /* CWLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWLAppDelegate.h; sourceTree = "<group>"; };
-		49BD183B1859D80700DDCAFB /* CWLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWLAppDelegate.m; sourceTree = "<group>"; };
+		49BD18391859D80700DDCAFB /* iBeaconLocalization-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iBeaconLocalization-Prefix.pch"; sourceTree = "<group>"; };
+		49BD183A1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBeaconLocalizationAppDelegate.h; sourceTree = "<group>"; };
+		49BD183B1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBeaconLocalizationAppDelegate.m; sourceTree = "<group>"; };
 		49BD183E1859D80700DDCAFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		49BD18401859D80700DDCAFB /* CWLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWLViewController.h; sourceTree = "<group>"; };
-		49BD18411859D80700DDCAFB /* CWLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWLViewController.m; sourceTree = "<group>"; };
 		49BD18431859D80700DDCAFB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		49BD184A1859D80700DDCAFB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		49C3F80918C1A7D400FCEA3A /* CDSiBeaconPFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSiBeaconPFViewController.h; sourceTree = "<group>"; };
+		49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSiBeaconPFViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +63,8 @@
 		4967942F1859E1CE00D6A640 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				49679442185A101E00D6A640 /* CWLParticleBase.h */,
-				49679443185A101E00D6A640 /* CWLParticleBase.m */,
-				496794301859E1CE00D6A640 /* CWLParticleFilter.h */,
-				496794311859E1CE00D6A640 /* CWLParticleFilter.m */,
-				496794331859E95600D6A640 /* CWLPointParticle.h */,
-				496794341859E95600D6A640 /* CWLPointParticle.m */,
-				49679445185A202400D6A640 /* CWLBeaconLandmark.h */,
-				49679446185A202400D6A640 /* CWLBeaconLandmark.m */,
+				49679445185A202400D6A640 /* CDSBeaconLandmark.h */,
+				49679446185A202400D6A640 /* CDSBeaconLandmark.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -90,25 +72,16 @@
 		496794391859EE4700D6A640 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
-				4967943A1859EE4700D6A640 /* CWLArenaView.h */,
-				4967943B1859EE4700D6A640 /* CWLArenaView.m */,
+				4967943A1859EE4700D6A640 /* CDSArenaView.h */,
+				4967943B1859EE4700D6A640 /* CDSArenaView.m */,
 			);
 			path = UIElements;
-			sourceTree = "<group>";
-		};
-		4967943E185A066600D6A640 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				4967943F185A066600D6A640 /* boxmuller.c */,
-				49679440185A066600D6A640 /* boxmuller.h */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		49BD181F1859D80700DDCAFB = {
 			isa = PBXGroup;
 			children = (
-				49BD18311859D80700DDCAFB /* iBeaconParticleFilter */,
+				49BD18311859D80700DDCAFB /* iBeaconLocalization */,
 				49BD182A1859D80700DDCAFB /* Frameworks */,
 				49BD18291859D80700DDCAFB /* Products */,
 				0BA4D9B083CA40EAA51DEDDB /* Pods.xcconfig */,
@@ -118,7 +91,7 @@
 		49BD18291859D80700DDCAFB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */,
+				49BD18281859D80700DDCAFB /* iBeaconLocalization.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,40 +108,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		49BD18311859D80700DDCAFB /* iBeaconParticleFilter */ = {
+		49BD18311859D80700DDCAFB /* iBeaconLocalization */ = {
 			isa = PBXGroup;
 			children = (
-				4967943E185A066600D6A640 /* Helpers */,
+				49C3F80818C1A7D400FCEA3A /* Controllers */,
 				4967942F1859E1CE00D6A640 /* Model */,
 				496794391859EE4700D6A640 /* UIElements */,
-				49BD183A1859D80700DDCAFB /* CWLAppDelegate.h */,
-				49BD183B1859D80700DDCAFB /* CWLAppDelegate.m */,
+				49BD183A1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.h */,
+				49BD183B1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.m */,
 				49BD183D1859D80700DDCAFB /* Main.storyboard */,
-				49BD18401859D80700DDCAFB /* CWLViewController.h */,
-				49BD18411859D80700DDCAFB /* CWLViewController.m */,
 				49BD18431859D80700DDCAFB /* Images.xcassets */,
 				49BD18321859D80700DDCAFB /* Supporting Files */,
 			);
-			path = iBeaconParticleFilter;
+			path = iBeaconLocalization;
 			sourceTree = "<group>";
 		};
 		49BD18321859D80700DDCAFB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				49BD18331859D80700DDCAFB /* iBeaconParticleFilter-Info.plist */,
+				49BD18331859D80700DDCAFB /* iBeaconLocalization-Info.plist */,
 				49BD18341859D80700DDCAFB /* InfoPlist.strings */,
 				49BD18371859D80700DDCAFB /* main.m */,
-				49BD18391859D80700DDCAFB /* iBeaconParticleFilter-Prefix.pch */,
+				49BD18391859D80700DDCAFB /* iBeaconLocalization-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49C3F80818C1A7D400FCEA3A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49C3F80918C1A7D400FCEA3A /* CDSiBeaconPFViewController.h */,
+				49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49BD18271859D80700DDCAFB /* iBeaconParticleFilter */ = {
+		49BD18271859D80700DDCAFB /* iBeaconLocalization */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49BD185A1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconParticleFilter" */;
+			buildConfigurationList = 49BD185A1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconLocalization" */;
 			buildPhases = (
 				38EFE6CD7ECA47DEA66DCAC3 /* Check Pods Manifest.lock */,
 				49BD18241859D80700DDCAFB /* Sources */,
@@ -180,9 +160,9 @@
 			);
 			dependencies = (
 			);
-			name = iBeaconParticleFilter;
+			name = iBeaconLocalization;
 			productName = iBeaconParticleFilter;
-			productReference = 49BD18281859D80700DDCAFB /* iBeaconParticleFilter.app */;
+			productReference = 49BD18281859D80700DDCAFB /* iBeaconLocalization.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -191,7 +171,7 @@
 		49BD18201859D80700DDCAFB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = CWL;
+				CLASSPREFIX = CDS;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Codeswell;
 				TargetAttributes = {
@@ -200,7 +180,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 49BD18231859D80700DDCAFB /* Build configuration list for PBXProject "iBeaconParticleFilter" */;
+			buildConfigurationList = 49BD18231859D80700DDCAFB /* Build configuration list for PBXProject "iBeaconLocalization" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -213,7 +193,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49BD18271859D80700DDCAFB /* iBeaconParticleFilter */,
+				49BD18271859D80700DDCAFB /* iBeaconLocalization */,
 			);
 		};
 /* End PBXProject section */
@@ -269,15 +249,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49679447185A202400D6A640 /* CWLBeaconLandmark.m in Sources */,
-				496794321859E1CE00D6A640 /* CWLParticleFilter.m in Sources */,
-				49679444185A101E00D6A640 /* CWLParticleBase.m in Sources */,
+				49679447185A202400D6A640 /* CDSBeaconLandmark.m in Sources */,
 				49BD18381859D80700DDCAFB /* main.m in Sources */,
-				496794351859E95600D6A640 /* CWLPointParticle.m in Sources */,
-				49BD18421859D80700DDCAFB /* CWLViewController.m in Sources */,
-				4967943C1859EE4700D6A640 /* CWLArenaView.m in Sources */,
-				49679441185A066600D6A640 /* boxmuller.c in Sources */,
-				49BD183C1859D80700DDCAFB /* CWLAppDelegate.m in Sources */,
+				4967943C1859EE4700D6A640 /* CDSArenaView.m in Sources */,
+				49BD183C1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.m in Sources */,
+				49C3F80B18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,9 +359,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
-				INFOPLIST_FILE = "iBeaconParticleFilter/iBeaconParticleFilter-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "iBeaconLocalization/iBeaconLocalization-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/iBeaconLocalization/iBeaconLocalization-Info.plist";
+				PRODUCT_NAME = iBeaconLocalization;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -398,9 +374,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iBeaconParticleFilter/iBeaconParticleFilter-Prefix.pch";
-				INFOPLIST_FILE = "iBeaconParticleFilter/iBeaconParticleFilter-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "iBeaconLocalization/iBeaconLocalization-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/iBeaconLocalization/iBeaconLocalization-Info.plist";
+				PRODUCT_NAME = iBeaconLocalization;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -408,7 +384,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49BD18231859D80700DDCAFB /* Build configuration list for PBXProject "iBeaconParticleFilter" */ = {
+		49BD18231859D80700DDCAFB /* Build configuration list for PBXProject "iBeaconLocalization" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49BD18581859D80700DDCAFB /* Debug */,
@@ -417,7 +393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49BD185A1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconParticleFilter" */ = {
+		49BD185A1859D80700DDCAFB /* Build configuration list for PBXNativeTarget "iBeaconLocalization" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49BD185B1859D80700DDCAFB /* Debug */,
