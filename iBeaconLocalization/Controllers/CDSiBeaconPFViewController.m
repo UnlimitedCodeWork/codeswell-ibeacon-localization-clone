@@ -170,10 +170,15 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 // Optional
 //- (double)xyParticleFilter:(CDSXYParticleFilter*)filter noiseWithMean:(double)m sigma:(double)s;
 
-
-- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesResampled:(NSArray*)particles {
+- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesNormalized:(NSArray*)particles {
     self.arenaView.particles = particles;
     [self.arenaView setNeedsDisplay];
+}
+
+
+- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesResampled:(NSArray*)particles {
+//    self.arenaView.particles = particles;
+//    [self.arenaView setNeedsDisplay];
 }
 
 

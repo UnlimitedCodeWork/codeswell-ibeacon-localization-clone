@@ -18,6 +18,7 @@
 		49BD183F1859D80700DDCAFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49BD183D1859D80700DDCAFB /* Main.storyboard */; };
 		49BD18441859D80700DDCAFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49BD18431859D80700DDCAFB /* Images.xcassets */; };
 		49C3F80B18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */; };
+		49C3F80E18C1C0A800FCEA3A /* UIColor+Interpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F80D18C1C0A800FCEA3A /* UIColor+Interpolation.m */; };
 		650AAB6CD8514A0398C2EA72 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B4F9C280BF424298CDD392 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		49BD184A1859D80700DDCAFB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		49C3F80918C1A7D400FCEA3A /* CDSiBeaconPFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSiBeaconPFViewController.h; sourceTree = "<group>"; };
 		49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSiBeaconPFViewController.m; sourceTree = "<group>"; };
+		49C3F80C18C1C0A800FCEA3A /* UIColor+Interpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Interpolation.h"; sourceTree = "<group>"; };
+		49C3F80D18C1C0A800FCEA3A /* UIColor+Interpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Interpolation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 			children = (
 				4967943A1859EE4700D6A640 /* CDSArenaView.h */,
 				4967943B1859EE4700D6A640 /* CDSArenaView.m */,
+				49C3F80C18C1C0A800FCEA3A /* UIColor+Interpolation.h */,
+				49C3F80D18C1C0A800FCEA3A /* UIColor+Interpolation.m */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C3F80E18C1C0A800FCEA3A /* UIColor+Interpolation.m in Sources */,
 				49679447185A202400D6A640 /* CDSBeaconLandmark.m in Sources */,
 				49BD18381859D80700DDCAFB /* main.m in Sources */,
 				4967943C1859EE4700D6A640 /* CDSArenaView.m in Sources */,

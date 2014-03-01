@@ -1,5 +1,5 @@
 PODS:
-  - CDSParticleFilter (0.4)
+  - CDSParticleFilter (0.5)
   - CocoaLumberjack (1.8.1):
     - CocoaLumberjack/Extensions
   - CocoaLumberjack/Core (1.8.1)
@@ -13,7 +13,7 @@ DEPENDENCIES:
   - EstimoteSDK
 
 SPEC CHECKSUMS:
-  CDSParticleFilter: 2157d6db7bc61e78679e71656f87bd3a119a8505
+  CDSParticleFilter: 2c0197e72a131aeb553315467411112afaaf9c4b
   CocoaLumberjack: 020378ec400d658923bf5887178394f65f052c90
   EstimoteSDK: f77e7cd88abd9b3be725041550e5aad727353d4f
 
