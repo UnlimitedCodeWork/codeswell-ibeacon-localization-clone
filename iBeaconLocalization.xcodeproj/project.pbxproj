@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4967943C1859EE4700D6A640 /* CDSArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967943B1859EE4700D6A640 /* CDSArenaView.m */; };
 		49679447185A202400D6A640 /* CDSBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 49679446185A202400D6A640 /* CDSBeaconLandmark.m */; };
+		49691FC418C4254D00DB3BDF /* GenericBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49691FC318C4254D00DB3BDF /* GenericBeaconManager.m */; };
 		49BD182C1859D80700DDCAFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182B1859D80700DDCAFB /* Foundation.framework */; };
 		49BD182E1859D80700DDCAFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182D1859D80700DDCAFB /* CoreGraphics.framework */; };
 		49BD18301859D80700DDCAFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BD182F1859D80700DDCAFB /* UIKit.framework */; };
@@ -19,6 +20,7 @@
 		49BD18441859D80700DDCAFB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49BD18431859D80700DDCAFB /* Images.xcassets */; };
 		49C3F80B18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */; };
 		49C3F80E18C1C0A800FCEA3A /* UIColor+Interpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3F80D18C1C0A800FCEA3A /* UIColor+Interpolation.m */; };
+		49F4347C18C2DCFA00478867 /* EstimoteBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4347B18C2DCFA00478867 /* EstimoteBeaconManager.m */; };
 		650AAB6CD8514A0398C2EA72 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B4F9C280BF424298CDD392 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,9 @@
 		4967943B1859EE4700D6A640 /* CDSArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSArenaView.m; sourceTree = "<group>"; };
 		49679445185A202400D6A640 /* CDSBeaconLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSBeaconLandmark.h; sourceTree = "<group>"; };
 		49679446185A202400D6A640 /* CDSBeaconLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSBeaconLandmark.m; sourceTree = "<group>"; };
+		49691FC118C41EAA00DB3BDF /* BeaconManagerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeaconManagerProtocol.h; sourceTree = "<group>"; };
+		49691FC218C4254D00DB3BDF /* GenericBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericBeaconManager.h; sourceTree = "<group>"; };
+		49691FC318C4254D00DB3BDF /* GenericBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericBeaconManager.m; sourceTree = "<group>"; };
 		49BD18281859D80700DDCAFB /* iBeaconLocalization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLocalization.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49BD182B1859D80700DDCAFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49BD182D1859D80700DDCAFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,6 +51,8 @@
 		49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSiBeaconPFViewController.m; sourceTree = "<group>"; };
 		49C3F80C18C1C0A800FCEA3A /* UIColor+Interpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Interpolation.h"; sourceTree = "<group>"; };
 		49C3F80D18C1C0A800FCEA3A /* UIColor+Interpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Interpolation.m"; sourceTree = "<group>"; };
+		49F4347A18C2DCFA00478867 /* EstimoteBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EstimoteBeaconManager.h; sourceTree = "<group>"; };
+		49F4347B18C2DCFA00478867 /* EstimoteBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EstimoteBeaconManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +123,7 @@
 		49BD18311859D80700DDCAFB /* iBeaconLocalization */ = {
 			isa = PBXGroup;
 			children = (
+				49F4347918C2DCFA00478867 /* BeaconManagers */,
 				49C3F80818C1A7D400FCEA3A /* Controllers */,
 				4967942F1859E1CE00D6A640 /* Model */,
 				496794391859EE4700D6A640 /* UIElements */,
@@ -146,6 +154,18 @@
 				49C3F80A18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		49F4347918C2DCFA00478867 /* BeaconManagers */ = {
+			isa = PBXGroup;
+			children = (
+				49691FC118C41EAA00DB3BDF /* BeaconManagerProtocol.h */,
+				49F4347A18C2DCFA00478867 /* EstimoteBeaconManager.h */,
+				49F4347B18C2DCFA00478867 /* EstimoteBeaconManager.m */,
+				49691FC218C4254D00DB3BDF /* GenericBeaconManager.h */,
+				49691FC318C4254D00DB3BDF /* GenericBeaconManager.m */,
+			);
+			path = BeaconManagers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,11 +275,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				49C3F80E18C1C0A800FCEA3A /* UIColor+Interpolation.m in Sources */,
+				49691FC418C4254D00DB3BDF /* GenericBeaconManager.m in Sources */,
 				49679447185A202400D6A640 /* CDSBeaconLandmark.m in Sources */,
 				49BD18381859D80700DDCAFB /* main.m in Sources */,
 				4967943C1859EE4700D6A640 /* CDSArenaView.m in Sources */,
 				49BD183C1859D80700DDCAFB /* IBeaconLocalizationAppDelegate.m in Sources */,
 				49C3F80B18C1A7D400FCEA3A /* CDSiBeaconPFViewController.m in Sources */,
+				49F4347C18C2DCFA00478867 /* EstimoteBeaconManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

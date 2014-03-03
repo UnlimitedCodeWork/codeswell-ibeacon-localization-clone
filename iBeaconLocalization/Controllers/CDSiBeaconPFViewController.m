@@ -6,13 +6,89 @@
 //  Copyright (c) 2013 Codeswell. All rights reserved.
 //
 
+
+#pragma mark - Adjustable parameters
+
+// Select one to pick SDK used for ranging iBeacons
+//#define USEESTIMOTESDK 1
+//#define USEROXIMITYSDK 1 // Not yet supported
+#define USEGENERICSDK 1
+//#define USEBLEONLYAPI 1 // Not yet supported
+
+// Select one set of landmarks
+#define USELANDMARKSETONE 1
+//#define USELANDMARKSETTWO 1
+
+static NSString* beaconRegionId = @"com.codeswell.ibeacondemo";
+#define ESTIMOTE_PROXIMITY_UUID [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"]
+#define ROXIMITY_PROXIMITY_UUID [[NSUUID alloc] initWithUUIDString:@"8DEEFBB9-F738-4297-8040-96668BB44281"]
+
+// Define the arena (Measurements in meters)
+#define PXPERMETER (320.0/7.0)
+#define ARENAWIDTH 7.0
+#define ARENAHEIGHT 5.0
+
+// Define landmark locations and identification
+#if USELANDMARKSETONE
+
+#define PROXIMITY_UUID ESTIMOTE_PROXIMITY_UUID
+#define LANDMARKSMAJOR 18900
+#define LANDMARK1COLOR [UIColor greenColor]
+#define LANDMARK1MINOR 1234
+#define LANDMARK1X 0.4
+#define LANDMARK1Y 0.4
+#define LANDMARK2COLOR [UIColor purpleColor]
+#define LANDMARK2MINOR 567
+#define LANDMARK2X 6.6
+#define LANDMARK2Y 0.4
+#define LANDMARK3COLOR [UIColor blueColor]
+#define LANDMARK3MINOR 89
+#define LANDMARK3X 3.5
+#define LANDMARK3Y 4.6
+
+#else
+
+#define PROXIMITY_UUID ROXIMITY_PROXIMITY_UUID
+#define LANDMARKSMAJOR 1
+#define LANDMARK1COLOR [UIColor whiteColor]
+#define LANDMARK1MINOR 1365
+#define LANDMARK1X 0.0
+#define LANDMARK1Y 1.0
+#define LANDMARK2COLOR [UIColor redColor]
+#define LANDMARK2MINOR 1366
+#define LANDMARK2X 6.7
+#define LANDMARK2Y 0.5
+#define LANDMARK3COLOR [UIColor yellowColor]
+#define LANDMARK3MINOR 1367
+#define LANDMARK3X 7.0
+#define LANDMARK3Y 3.5
+
+#endif
+
+// Filter parameters
+#define PARTICLECOUNT 500
+#define MEASUREMENTINTERVAL 0.5
+#define MEASUREMENTSIGMA 2.0
+#define NOISESIGMA 0.1
+
+#pragma mark -
+
+
 #import "CDSiBeaconPFViewController.h"
 #import "CDSXYParticleFilter.h"
 #import "CDSArenaView.h"
+#import "BeaconManagerProtocol.h"
 
-#import "ESTBeaconManager.h"
+#if USEESTIMOTESDK
+#import "EstimoteBeaconManager.h"
+#elif USEROXIMITYSDK
+#import "RoximityBeaconManager.h"
+#else
+#import "GenericBeaconManager.h"
+#endif
 
-@interface CDSiBeaconPFViewController () <CDSXYParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate, ESTBeaconManagerDelegate>
+
+@interface CDSiBeaconPFViewController () <CDSXYParticleFilterDelegate, UITableViewDataSource, UITableViewDelegate, BeaconManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *beaconTable;
 @property (weak, nonatomic) IBOutlet CDSArenaView *arenaView;
@@ -22,34 +98,9 @@
 @property (nonatomic, strong) NSDictionary* landmarkHash;
 @property (nonatomic, strong) NSTimer* timer;
 
-@property (nonatomic, strong) ESTBeaconManager* beaconMgr;
+@property (nonatomic, strong) id<BeaconManager> beaconMgr;
 
 @end
-
-
-static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
-
-// Define the arena (Measurements in meters)
-#define PXPERMETER (320.0/7.0)
-#define ARENAWIDTH 7.0
-#define ARENAHEIGHT 5.0
-// Landmark locations and identification
-#define LANDMARKSMAJOR 18900
-#define LANDMARK1X 0.4
-#define LANDMARK1Y 0.4
-#define LANDMARK1MINOR 1234
-#define LANDMARK2X 6.6
-#define LANDMARK2Y 0.4
-#define LANDMARK2MINOR 567
-#define LANDMARK3X 3.5
-#define LANDMARK3Y 4.6
-#define LANDMARK3MINOR 89
-
-// Filter parameters
-#define PARTICLECOUNT 500
-#define MEASUREMENTINTERVAL 0.5
-#define MEASUREMENTSIGMA 2.0
-#define NOISESIGMA 0.1
 
 
 @implementation CDSiBeaconPFViewController
@@ -59,13 +110,20 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
     
     self.arenaView.pxPerMeter = PXPERMETER;
     
-    self.beaconMgr = [[ESTBeaconManager alloc] init];
-    self.beaconMgr.delegate = self;
-    self.beaconMgr.avoidUnknownStateBeacons = YES;
+// Get the appropriate beacon manager, based on the selected SDK
+#if USEESTIMOTESDK
+    self.beaconMgr = [[EstimoteBeaconManager alloc] initWithProximityUuid:PROXIMITY_UUID
+                                                                 regionId:beaconRegionId];
+#elif USEROXIMITYSDK
+    self.beaconMgr = [[RoximityBeaconManager alloc] initWithProximityUuid:PROXIMITY_UUID
+                                                                 regionId:beaconRegionId];
+#else
+    self.beaconMgr = [[GenericBeaconManager alloc] initWithProximityUuid:PROXIMITY_UUID
+                                                                regionId:beaconRegionId];
+#endif
     
-    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initWithProximityUUID:ESTIMOTE_PROXIMITY_UUID
-                                                                  identifier:beaconRegionId];
-    [self.beaconMgr startRangingBeaconsInRegion:region];
+    self.beaconMgr.delegate = self;
+    [self.beaconMgr beginRanging];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,15 +143,15 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
                            [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:LANDMARKSMAJOR minor:LANDMARK1MINOR]
                                                               x:LANDMARK1X
                                                               y:LANDMARK1Y
-                                                          color:[UIColor greenColor]],
+                                                          color:LANDMARK1COLOR],
                            [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:LANDMARKSMAJOR minor:LANDMARK2MINOR]
                                                               x:LANDMARK2X
                                                               y:LANDMARK2Y
-                                                          color:[UIColor purpleColor]],
+                                                          color:LANDMARK2COLOR],
                            [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:LANDMARKSMAJOR minor:LANDMARK3MINOR]
                                                               x:LANDMARK3X
                                                               y:LANDMARK3Y
-                                                          color:[UIColor blueColor]]
+                                                          color:LANDMARK3COLOR]
                            ];
         self.arenaView.landmarks = self.landmarks;
         
@@ -152,7 +210,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
         
         if (landmark.rssi < -10) {
             
-            // Get the expected distance in pixels, using a^2 + b^2 = c^2
+            // Get the expected distance in pixels, using Euclidian distance (a^2 + b^2 = c^2)
             double expectedDistance = sqrtf(
                                            powf((landmark.x-p.x), 2)
                                            + powf((landmark.y-p.y), 2)
@@ -170,42 +228,44 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 // Optional
 //- (double)xyParticleFilter:(CDSXYParticleFilter*)filter noiseWithMean:(double)m sigma:(double)s;
 
+
 - (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesNormalized:(NSArray*)particles {
     self.arenaView.particles = particles;
     [self.arenaView setNeedsDisplay];
 }
 
 
-- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesResampled:(NSArray*)particles {
-//    self.arenaView.particles = particles;
-//    [self.arenaView setNeedsDisplay];
-}
+// Optional
+//- (void)xyParticleFilter:(CDSXYParticleFilter*)filter particlesResampled:(NSArray*)particles;
 
 
 #pragma mark ESTBeaconManagerDelegate protocol
 
--(void)beaconManager:(ESTBeaconManager *)manager
-     didRangeBeacons:(NSArray *)beacons
-            inRegion:(ESTBeaconRegion *)region
-{
-    if ([region.identifier isEqualToString:beaconRegionId]) {
+- (void)rangedBeacons:(NSArray *)beacons {
+
+    // Clear the rssi on all landmarks, so only ones we've ranged will have rssi values
+    [self.landmarks enumerateObjectsUsingBlock:^(CDSBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
+        landmark.rssi = 0;
+    }];
+    
+    for (id beacon in beacons) {
+        NSString* ident = [CDSBeaconLandmark identFromMajor:[[beacon valueForKey:@"major"] integerValue]
+                                                      minor:[[beacon valueForKey:@"minor"] integerValue]];
+        CDSBeaconLandmark* landmark = self.landmarkHash[ident];
         
-        [self.landmarks enumerateObjectsUsingBlock:^(CDSBeaconLandmark* landmark, NSUInteger idx, BOOL *stop) {
-            landmark.rssi = 0;
-        }];
+        // Get an RSSI, if we can
+        NSNumber* rssi = [beacon valueForKey:@"rssi"];
         
-        for (ESTBeacon* beacon in beacons) {
-            NSString* ident = [CDSBeaconLandmark identFromMajor:[beacon.major integerValue] minor:[beacon.minor integerValue]];
-            
-            CDSBeaconLandmark* landmark = self.landmarkHash[ident];
-            landmark.rssi = beacon.rssi;
+        // Set it on the landmark, if we got one
+        if (rssi != nil) {
+            landmark.rssi = [rssi integerValue];
         }
-
-        [self.beaconTable reloadData];
-        [self.particleFilter applyMeasurements:self.landmarks];
     }
+    
+    // Show the data and iterate the filter
+    [self.beaconTable reloadData];
+    [self.particleFilter applyMeasurements:self.landmarks];
 }
-
 
 
 #pragma mark UITableViewDataSource Protocol
@@ -218,7 +278,7 @@ static NSString* beaconRegionId = @"com.dxydoes.ibeacondemo";
 #pragma mark UITableViewDelegate Protocol
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Known landmarks";
+    return [NSString stringWithFormat:@"Landmarks [%@]", self.beaconMgr.class];
 }
 
 
